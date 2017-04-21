@@ -16,7 +16,9 @@ Starten Sie zunächst mit einer einfachen Übung: Definieren Sie einen Vektor, d
 c(1:5)
 
 *** =pre_exercise_code
+```{r}
 
+```
 
 *** =sample_code
 
@@ -27,8 +29,9 @@ c(1:5)
 # Im vorliegenden Beispiel lautet die Anweisung, die Lösung unter dem Objekt *testvektor* zu speichern.
 
 *** =solution
-
+```{r}
 testvektor <- c(1:5)
+```
 
 *** =sct
 

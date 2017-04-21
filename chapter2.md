@@ -462,7 +462,7 @@ success_msg("Sehr gut!")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:ce73d9c96b
-## Berechnungen in R: Rendite (I)
+## Berechnungen in R: Rendite (II)
 
 Der Datensatz liegt in `aktien`. Nun sollen die Logarithmischen-Renditen für jeden Tag berechnet werden.
 
