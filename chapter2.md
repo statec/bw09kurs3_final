@@ -4,7 +4,7 @@ description : Übungen zu grundlegenden Funktionen mit R
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:641f650cf3
-## 1. Einlesen von Datensätzen in R
+## Einlesen von Datensätzen in R
 
 Ihnen wurde der Preisverlauf der Deutschen Bank Aktie eines Jahres als `CSV-Datei` unter der angegebenen URL zur Verfügung gestellt.
 
@@ -13,7 +13,7 @@ Ihnen wurde der Preisverlauf der Deutschen Bank Aktie eines Jahres als `CSV-Date
 
 *** =instructions
 
-- Lesen Sie die Daten ein und speichern Sie diese in `deutschebank`.
+- Lesen Sie die Daten ein und speichern Sie diese im Objekt `deutschebank`.
 - Schauen Sie sich die Daten in der Konsole an.
 
 *** =hint
@@ -29,7 +29,7 @@ Ihnen wurde der Preisverlauf der Deutschen Bank Aktie eines Jahres als `CSV-Date
 ```{r}
 
 # die Datei liegt in https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv
-
+deutschebank<-
 
 # Geben Sie die eingelesenen Daten in der Konsole aus
 
@@ -59,7 +59,8 @@ success_msg("Sehr gut!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:5db7fe4b29
 ## Missing Values (I)
 
-Gegeben ist der Datensatz `aktien` (bereits eingelesen). Er besteht aus den Kursdaten der Deutschen Bank (gehandelt an einer inländischen Börse) und facebook (gehandelt an einer US Börse). Durch die unterschiedlichen Feiertage in Deutschland und der USA fehlen einige Werte im Datensatz. Diese Felder sind mit `NA` gekennzeichnet und sind Gegenstand der vorliegenden Aufgabe.
+Gegeben ist der Datensatz `aktien` (bereits eingelesen). Er besteht aus den Kursdaten der Deutschen Bank (gehandelt an einer inländischen Börse) und facebook (gehandelt an einer US Börse). 
+Durch die unterschiedlichen Feiertage in Deutschland und den USA fehlen einige Werte im Datensatz. Diese Felder sind mit `NA` gekennzeichnet und sind Gegenstand der vorliegenden Aufgabe.
 
 (Quelle der Daten: de.finance.yahoo.com)
 
@@ -70,7 +71,7 @@ Ersetzen Sie die NA Felder in dem Datensatz durch:
 - den Durchschnitt der gesamten Zeitreihe. Hierfür können Sie die `mean()`-Funktion nutzen.
 - in den [ ]-Klammern hinter der Variable stehen die Auswahlbedingungen. Beispielsweise: `spalte[is.na(spalte)]` gibt nur die Felder aus `spalte` zurück, in denen NA steht.
 
-Nehmen Sie jeweils die Spalten db und fb.
+Ergänzen Sie die fehlenden Werte direkt im Datensatz `aktien`.
 
 *** =hint
 
@@ -152,7 +153,7 @@ test_error()
 success_msg("Sehr gut!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:df9a88a1a0
+--- type:NormalExercise lang:r xp:300 skills:1 key:df9a88a1a0
 ## Missing Values (II)
 
 Gegeben ist wieder der Datensatz `aktien` (bereits eingelesen). Ersetzen Sie nun die NAs im Datensatz durch den gleitenden Durchschnitt über 10 Tage. Nehmen Sie hierfür den Durchschnitt von den 5 vorherigen und 5 folgenden Werten. 
@@ -161,7 +162,7 @@ Nützliche R Funktionen:
 
 - `c(1,2,3,4,9)` bildet einen Vektor mit dem Inhalt 1,2,3,4.
 - `c(1:4,9)` bildet den gleichen Vektor.
-- `which(9 == c(1:4,9) )` gibt an, an welcher Stelle der Vektor dem Wert 9 entspricht.
+- `which(9 == c(1:4,9) )` gibt an, an welcher Stelle der Vektor dem Wert 9 entspricht (also = 5).
 
 *** =instructions
 
@@ -225,25 +226,19 @@ aktien$db[___]
 
 
 ### facebook (fb)
-# Finde die Zeile mit dem ersten Feiertag "2017-01-16" und speichere die Zeilennummer in index2
+# Finde die Zeile mit dem ersten Feiertag "2017-01-16" und speichere die Zeilennummer in index3
 
 # durch Durchschnitt ersetzen
 
 # Überprüfe neuen Wert
 
 
-# Finde die Zeile mit dem zweiten Feiertag "2017-02-20" und speichere die Zeilennummer in index2
+# Finde die Zeile mit dem zweiten Feiertag "2017-02-20" und speichere die Zeilennummer in index4
 
 # durch Durchschnitt ersetzen
 
 # Überprüfe neuen Wert
 
-
-# Finde den Index und schreibe ihn in index4
-
-# durch Durchschnitt ersetzen
-
-# Neuer Wert
 
 
 ```
@@ -311,7 +306,7 @@ success_msg("Sehr gut!")
 
 Ihre Ergebnisse aus der letzten Aufgabe wurden geplotted. Sie sehen rechts den Plot für die facebook Aktie. Beim ersten Plot wurden die fehlenden Werte durch den gesamten Durchschnitt ersetzt, beim 2. Plot wurden die fehlenden Werte durch den gleitenden 10er-Durchschnitt ersetzt.
 
-Schauen Sie sich beide Plots an und vergleichen Sie die ersetzten Stellen. Die Daten zu diesen Stellen waren 16.01.17 und 20.02.17. 
+Schauen Sie sich beide Plots an und vergleichen Sie die ersetzten Stellen (Feiertage am 16.01.17 und 20.02.17). 
 
 Welche Methode eignet sich besser zur Ersetzung?
 *** =instructions
@@ -374,7 +369,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 
 Gegeben ist wieder der Datensatz `aktien` (bereits eingelesen). Nun sollen die Renditen für jeden Tag der Zeitreihe berechnet werden. 
 
-Vektoren können in R einfach voneinander subtrahiert werden, solange sie die gleiche Dimension haben. 
+Vektoren können in R einfach elementweise voneinander subtrahiert werden, solange sie die gleiche Dimension haben. 
 
 Tipp: Durch `vektor[5:length(vektor)]` entsteht ein Vektor, der alle Elemente von `vektor` ab dem 5. Element enthält.
 

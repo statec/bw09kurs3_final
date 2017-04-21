@@ -24,7 +24,7 @@ c(1:5)
 
 ```{r}
 # Dieses Fenster stellt den Editor dar, den Sie bereits aus RStudio kennnen und erlaubt es Skripte zu schreiben.
-# Für Lösungen der Aufgaben muss immer in dieses Fenster genutzt werden. Für Zwischenschritte können Sie aber auch direkt in der Konsole arbeiten.
+# Lösungen der Aufgaben werden immer in dieses Fenster geschrieben. Für Zwischenschritte können Sie aber auch direkt in der Konsole arbeiten.
 
 # Wichtig: In dem auskommentierten Teil am Anfang dieses Skriptes finden Sie weitere Hinweise, wie die Aufgabe zu lösen ist.
 # Im vorliegenden Beispiel lautet die Anweisung, die Lösung unter dem Objekt *testvektor* zu speichern.
