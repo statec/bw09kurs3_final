@@ -432,7 +432,7 @@ renditeDB <-
 *** =solution
 ```{r}
 # Erstelle einen vektor mit den Einträgen aus aktien$db. Lasse den letzten Eintrag weg.
-x_tminus1 <- aktien$db[1:length(aktien$db)-1]
+x_tminus1 <- aktien$db[1:(length(aktien$db)-1)]
 
 # Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
 x_t <- aktien$db[2:length(aktien$db)]
@@ -459,11 +459,11 @@ success_msg("Sehr gut!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:ce73d9c96b
 ## Berechnungen in R: Rendite (II)
 
-Der Datensatz liegt in `aktien`. Nun sollen die Logarithmischen-Renditen für jeden Tag berechnet werden.
+Der Datensatz liegt in `aktien`. Nun sollen die logarithmischen Renditen für jeden Tag berechnet werden.
 
 Tipps:
 
-Vektoren können in R einfach voneinander subtrahiert werden, solange sie die gleiche Dimension haben. Durch `vektor[5:length(vektor)]` entsteht ein Vektor, der alle Elemente von `vektor` ab dem 5. Element enthält.
+Vektoren können in R einfach elementweise voneinander subtrahiert werden, solange sie die gleiche Dimension haben. Durch `vektor[5:length(vektor)]` entsteht ein Vektor, der alle Elemente von `vektor` ab dem 5. Element enthält.
 
 Den natürlichen Logarithmus können Sie in R einfach mit `log(x)` bestimmen. Hierbei kann `x` auch ein Vektor sein, der Logarithmus wird in dem Fall elementeweise ausgeführt.
 
@@ -526,7 +526,7 @@ logRenditeDB <-
 *** =solution
 ```{r}
 # Erstellung Vektor mit Einträgen aus aktien$db. Entferne den letzten Eintrag.
-x_tminus1 <- aktien$db[1:length(aktien$db)-1]
+x_tminus1 <- aktien$db[1:(length(aktien$db)-1)]
 # Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
 x_t <- aktien$db[2:length(aktien$db)]
 # Berechnung der Rendite
@@ -552,16 +552,16 @@ success_msg("Sehr gut!")
 
 In R gibt es viele Möglichkeiten, Daten grafisch darzustellen. In früheren Aufgaben haben Sie bereits einige Plots gesehen. Solche Plots sollen in dieser Aufgabe nun von Ihnen erstellt werden.
 
+Verwenden Sie `plot(x,y, ...)` um die Zeitreihe der Facebook-Aktie zu plotten. Verwenden Sie den Eröffnungspreis (Open). 
+Hilfe zum `plot` Befehl und den Eingabemöglichkeiten finden Sie, indem Sie `?plot()` in der Konsole eingeben. 
 
 *** =instructions
 
-	Verwenden Sie `plot(x,y, ...)` um die Zeitreihe der Facebook-Aktie zu plotten. Verwenden Sie den Eröffnungspreis (Open). 
-	Hilfe zum `plot` Befehl und den Eingabemöglichkeiten finden Sie, indem Sie `?plot()` in der Konsole eingeben. 
-	Der Plot sollte folgende Anforderungen erfüllen:
+Der Plot sollte folgende Anforderungen erfüllen:
 
-	- Die Datenpunkte sollten durch Linien miteinander verbunden sein.
-	- Der Plot sollte einen sinnvollen Titel erhalten.
-	- Die x-Achse und y-Achse sollten mit "Datum" und "Eroeffnungspreis ($)" beschriftet werden.
+- Die Datenpunkte sollten durch Linien miteinander verbunden sein.
+- Der Plot sollte einen sinnvollen Titel erhalten.
+- Die x-Achse und y-Achse sollten mit "Datum" und "Eroeffnungspreis ($)" beschriftet werden.
 
 
 *** =hint
@@ -606,14 +606,11 @@ success_msg("Sehr gut!")
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:de382d695d
 ##  Analyse der Daten
 
-Im Datensatz `aktien` haben wir Den Eröffnungspreis und die jeweilige Tagesrendite der Facebook Aktie von einem Jahr. Wir betrachten nun die Volatilität der Zeitreihe. Bei dem Plot der Eröffnungspreise (Plot 1) kann man nur grob schätzen wo die Volatilität am stärksten ist. Im Plot 2 sehen Sie die Rendite der Zeitreihe geplottet. Hier kann man das Ergebnis schon etwas besser heraus lesen.
+Im Datensatz `aktien` haben wir den Eröffnungspreis und die jeweilige Tagesrendite der Facebook Aktie von einem Jahr. Wir betrachten nun die Volatilität der Zeitreihe. Bei dem Plot der Eröffnungspreise (Plot 1) kann man nur grob schätzen wo die Volatilität am stärksten ist. Im Plot 2 sehen Sie die Rendite der Zeitreihe geplottet. Hier kann man das Ergebnis schon etwas besser heraus lesen.
 
-Wo ist die Volatilität am höchsten? Sie können das Datum mit der höchsten Volatilität berechnen, wenn der Plot kein eindeutiges Ergebnis liefert.
-Hilfe: 
+Wo ist die Volatilität am höchsten? 
 
-- Um das `Date` mit dem maximalen `wert` aus einem Datensatz `daten` zu bekommen, kann man `daten$Date[daten$wert == max(daten$wert)]` benutzen.
-- Mit `abs(wert)` bekommt man den Absolutwert jedes Elementes des Vektors.
-
+Sollte die Lösung nicht eindeutig sein, können Sie auch die Ergebnisse des `var()` Befehls für die angegebenen Zeiträume vergleichen.
 
 
 *** =instructions
@@ -664,7 +661,7 @@ plot(aktien$Date, aktien$Rendite, type = "l", main = "Facebook Aktie 2016-2017",
 
 *** =sct
 ```{r}
-msg_bad <- "Das stimmt nicht! Nutze die Konsole und berechne das Datum ganz genau."
+msg_bad <- "Falsch!"
 msg_success <- "Richtig!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
