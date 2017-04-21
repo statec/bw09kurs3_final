@@ -1,116 +1,81 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
-attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
+title       : Einführung in DataCamp
+description :  Dieses Kapitel soll dazu dienen sich in DataCamp zurechtzufinden
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:b60e009a85
-## A really bad movie
 
-Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
+--- type:NormalExercise lang:r xp:10 skills:1 key:a57baa03e8
+##Beispiel: Vektoren
 
 *** =instructions
-- Adventure
-- Action
-- Animation
-- Comedy
 
-*** =hint
-Have a look at the plot. Which color does the point with the lowest rating have?
+An dieser Stelle finden Sie immer die Aufgabenstellung. 
+
+Starten Sie zunächst mit einer einfachen Übung: Definieren Sie einen Vektor, der aus den Elementen 1 bis 5 besteht.
+
+*** =hint 
+c(1:5)
 
 *** =pre_exercise_code
-```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
 
-movies <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
 
-library(ggplot2)
+*** =sample_code
 
-ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
-```
+# Dieses Fenster stellt den Editor dar, den Sie bereits aus RStudio kennnen und erlaubt es Skripte zu schreiben.
+# Für Lösungen der Aufgaben muss immer in dieses Fenster genutzt werden. Für Zwischenschritte können Sie aber auch direkt in der Konsole arbeiten.
+
+# Wichtig: In dem auskommentierten Teil am Anfang dieses Skriptes finden Sie weitere Hinweise, wie die Aufgabe zu lösen ist.
+# Im vorliegenden Beispiel lautet die Anweisung, die Lösung unter dem Objekt *testvektor* zu speichern.
+
+*** =solution
+
+testvektor <- c(1:5)
 
 *** =sct
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
 
-msg_bad <- "That is not correct!"
-msg_success <- "Exactly! There seems to be a very bad action movie in the dataset."
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
-```
+test_error()
+test_object("testvektor",
+            undefined_msg = "Hier hat etwas nicht geklappt. Versuchen Sie es erneut!",
+            incorrect_msg = "Es wurden falsche Werte zugewiesen.")
+success_msg("Richtig!")
 
---- type:NormalExercise lang:r xp:100 skills:1 key:6d02c8d575
-## More movies
 
-In the previous exercise, you saw a dataset about movies. In this exercise, we'll have a look at yet another dataset about movies!
 
-A dataset with a selection of movies, `movie_selection`, is available in the workspace.
+--- type:NormalExercise lang:r xp:10 skills:1 key:235b491598
+## Daten einlesen
+
 
 *** =instructions
-- Check out the structure of `movie_selection`.
-- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
-- Use `plot()` to  plot `good_movies$Run` on the x-axis, `good_movies$Rating` on the y-axis and set `col` to `good_movies$Genre`.
+
+Ein einfaches Beispiel soll das Einlesen von Daten mit `read.csv()` demonstrieren.
+
 
 *** =hint
-- Use `str()` for the first instruction.
-- For the second instruction, you should use `...[movie_selection$Rating >= 5, ]`.
-- For the plot, use `plot(x = ..., y = ..., col = ...)`.
+
+
 
 *** =pre_exercise_code
 ```{r}
-# You can also prepare your dataset in a specific way in the pre exercise code
 
-library(MindOnStats)
-data(Movies)
-movie_selection <- Movies[Movies$Genre %in% c("action", "animated", "comedy"),c("Genre", "Rating", "Run")]
-
-# Clean up the environment
-rm(Movies)
 ```
 
 *** =sample_code
 ```{r}
-# movie_selection is available in your workspace
+# die Daten liegen in https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv
 
-# Check out the structure of movie_selection
-
-
-# Select movies that have a rating of 5 or higher: good_movies
-
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
-
+# Zur Überprüfung des Ergebnisses müssen die Daten in einem Objekt mit dem Namen "test" abgespeichert werden.
 ```
 
 *** =solution
 ```{r}
-# movie_selection is available in your workspace
-
-# Check out the structure of movie_selection
-str(movie_selection)
-
-# Select movies that have a rating of 5 or higher: good_movies
-good_movies <- movie_selection[movie_selection$Rating >= 5, ]
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
-plot(good_movies$Run, good_movies$Rating, col = good_movies$Genre)
+test <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv")
 ```
 
 *** =sct
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-test_function("str", args = "object",
-              not_called_msg = "You didn't call `str()`!",
-              incorrect_msg = "You didn't call `str(object = ...)` with the correct argument, `object`.")
-
-test_object("good_movies")
-
-test_function("plot", args = "x")
-test_function("plot", args = "y")
-test_function("plot", args = "col")
-
+test_object("test")
 test_error()
 
-success_msg("Good work!")
+
+success_msg("Sehr gut!")
 ```
+
