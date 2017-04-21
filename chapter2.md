@@ -607,3 +607,144 @@ test_error()
 success_msg("Sehr gut!")
 
 ```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:de382d695d
+##  Analyse der Daten
+
+Im Datensatz `aktien` haben wir Den Eröffnungspreis und die jeweilige Tagesrendite der Facebook Aktie von einem Jahr. Wir betrachten nun die Volatilität der Zeitreihe. Bei dem Plot der Eröffnungspreise (Plot 1) kann man nur grob schätzen wo die Volatilität am stärksten ist. Im Plot 2 sehen Sie die Rendite der Zeitreihe geplottet. Hier kann man das Ergebnis schon etwas besser heraus lesen.
+
+Wo ist die Volatilität am höchsten? Sie können das Datum mit der höchsten Volatilität berechnen, wenn der Plot kein eindeutiges Ergebnis liefert.
+Hilfe: 
+
+- Um das `Date` mit dem maximalen `wert` aus einem Datensatz `daten` zu bekommen, kann man `daten$Date[daten$wert == max(daten$wert)]` benutzen.
+- Mit `abs(wert)` bekommt man den Absolutwert jedes Elementes des Vektors.
+
+
+
+*** =instructions
+
+- Anfang November
+- Ende April
+- Anfang Januar
+- Mitte August
+
+
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+# Einlesen der Daten 
+aktien <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/fb_aktie.csv")
+
+# Datum als class Date initialisieren
+aktien$Date <- as.Date(aktien$Date)
+
+# sortieren Datensatz nach Datum
+aktien <- aktien[order(aktien$Date),]
+
+# Verkleinerung der Datensätze
+aktien <- select(aktien, Date, Open)
+plot(aktien$Date, aktien$Open, type = "l", main = "Facebook Aktie 2016-2017", xlab = "Datum", ylab = "Eröffnungspreis ($)")
+
+# Funktion zur Berechnung der Rendite
+rendite <- function(zeitreihe){ 
+  r <- zeitreihe[1:length(zeitreihe)-1];  
+  ren <- zeitreihe[2:length(zeitreihe)];
+  ren <- (ren - r) / r;
+  return(ren)     
+}
+
+# Rendite für Eröffnungspreise berechnen
+fbRendite <- rendite(aktien$Open) 
+
+# Rendite zum Datensatz hizufügen, vorne 0
+fbRen <- c(0,fbRendite)
+aktien[ , "Rendite"] <- fbRen
+
+plot(aktien$Date, aktien$Rendite, type = "l", main = "Facebook Aktie 2016-2017", xlab = "Datum", ylab = "Rendite")
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "Das stimmt nicht! Nutze die Konsole und berechne das Datum ganz genau."
+msg_success <- "Richtig!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:5e209754d2
+## Histogramm
+Ein Histogramm trägt die Häufigkeit der angenommenen Werte einer Variable auf. Ein Datensatz mit den berechneten Renditen für die Deutsche Bank Aktie liegt unter `aktien`. Erstellen Sie ein Histogramm über die Verteilung der Renditen der Aktie. Die Funktion zum Erstellen eines Histogramms ist `hist(x,...)`.
+
+
+*** =instructions
+Nutzen Sie `?hist()` um mehr über die Anwendung der Funktion zu erfahren.
+Das Histogramm sollte enthalten: 
+
+- `breaks` um die dicke der Balken anzupassen.
+- die Überschrift "Verteilung der Renditen".
+- `xlab` und `ylab` zur Beschriftung der Achsen, mit "Renditen" und "Haeufigkeit".
+
+
+*** =hint
+
+- An die x-Werte kommen Sie über `aktien$Rendite`
+- Denken Sie daran, die Beschriftungen in Anführungszeichen zu setzen.
+
+
+*** =pre_exercise_code
+```{r}
+# Einlesen der Daten
+aktien <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie.csv")
+
+# Datum als class Date initialisieren
+aktien$Date <- as.Date(aktien$Date)
+
+# sortieren Datensatz nach Datum
+aktien <- aktien[order(aktien$Date),]
+
+# Funktion zur Berechnung der Rendite
+rendite <- function(zeitreihe){ 
+  r <- zeitreihe[1:length(zeitreihe)-1];  
+  ren <- zeitreihe[2:length(zeitreihe)];
+  ren <- (ren - r) / r;
+  return(ren)     
+}
+
+# Rendite von DB Aktien
+rDbAktien <- rendite(aktien$Open)
+
+# Rendite zum Datensatz hinzufügen
+rDbAktien <- c(0,rDbAktien)
+aktien[ , "Rendite"] <- rDbAktien
+
+```
+
+*** =sample_code
+```{r}
+# Erstellen Sie ein Histogramm und setzen Sie breaks = 20.
+
+# Erstellen Sie das Histogramm mit breaks = 40.
+
+```
+
+*** =solution
+```{r}
+# Erstellen Sie ein Histogramm und setzen Sie breaks = 20.
+hist(aktien$ Rendite, breaks = 20, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
+
+# Erstellen Sie das Histogramm mit breaks = 40.
+hist(aktien$ Rendite, breaks = 40, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
+
+```
+
+*** =sct
+```{r}
+test_function("hist", args = c("x", "breaks", "main", "xlab", "ylab"), index = 1) 
+test_function("hist", args = c("x", "breaks", "main", "xlab", "ylab"), index = 2) 
+test_error()
+success_msg("Gratulation! Sie haben die letzte Aufgabe gemeistert.")
+```
