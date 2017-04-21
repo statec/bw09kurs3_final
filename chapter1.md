@@ -22,11 +22,15 @@ c(1:5)
 
 *** =sample_code
 
+```{r}
 # Dieses Fenster stellt den Editor dar, den Sie bereits aus RStudio kennnen und erlaubt es Skripte zu schreiben.
 # Für Lösungen der Aufgaben muss immer in dieses Fenster genutzt werden. Für Zwischenschritte können Sie aber auch direkt in der Konsole arbeiten.
 
 # Wichtig: In dem auskommentierten Teil am Anfang dieses Skriptes finden Sie weitere Hinweise, wie die Aufgabe zu lösen ist.
 # Im vorliegenden Beispiel lautet die Anweisung, die Lösung unter dem Objekt *testvektor* zu speichern.
+
+testvektor<- 
+```
 
 *** =solution
 ```{r}
@@ -34,13 +38,13 @@ testvektor <- c(1:5)
 ```
 
 *** =sct
-
+```{r}
 test_error()
 test_object("testvektor",
             undefined_msg = "Hier hat etwas nicht geklappt. Versuchen Sie es erneut!",
             incorrect_msg = "Es wurden falsche Werte zugewiesen.")
 success_msg("Richtig!")
-
+```
 
 
 --- type:NormalExercise lang:r xp:10 skills:1 key:235b491598
@@ -77,8 +81,6 @@ test <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/F
 ```{r}
 test_object("test")
 test_error()
-
-
 success_msg("Sehr gut!")
 ```
 
