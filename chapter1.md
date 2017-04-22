@@ -6,11 +6,13 @@ description :  Dieses Kapitel soll dazu dienen sich in DataCamp zurechtzufinden
 --- type:NormalExercise lang:r xp:10 skills:1 key:a57baa03e8
 ##Beispiel: Vektoren
 
-*** =instructions
-
 An dieser Stelle finden Sie immer die Aufgabenstellung. 
 
-Starten Sie zunächst mit einer einfachen Übung: Definieren Sie einen Vektor, der aus den Elementen 1 bis 5 besteht.
+Starten Sie zunächst mit einer einfachen Übung...
+
+*** =instructions
+
+- Definieren Sie einen Vektor, der aus den Elementen 1 bis 5 besteht.
 
 *** =hint 
 c(1:5)

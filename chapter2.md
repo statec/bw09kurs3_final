@@ -304,7 +304,7 @@ success_msg("Sehr gut!")
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:09dde5f88b
 ## Missing Values (III)
 
-Ihre Ergebnisse aus der letzten Aufgabe wurden geplotted. Sie sehen rechts den Plot für die facebook Aktie. Beim ersten Plot wurden die fehlenden Werte durch den gesamten Durchschnitt ersetzt, beim 2. Plot wurden die fehlenden Werte durch den gleitenden 10er-Durchschnitt ersetzt.
+Ihre Ergebnisse aus der letzten Aufgabe wurden geplotted. Sie sehen rechts den Plot für die facebook Aktie. Beim ersten Plot wurden die fehlenden Werte durch den gesamten Durchschnitt ersetzt, beim zweiten Plot wurden die fehlenden Werte durch den gleitenden 10er-Durchschnitt ersetzt.
 
 Schauen Sie sich beide Plots an und vergleichen Sie die ersetzten Stellen (Feiertage am 16.01.17 und 20.02.17). 
 
