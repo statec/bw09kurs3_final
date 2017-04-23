@@ -160,7 +160,7 @@ Gegeben ist wieder der Datensatz `aktien` (bereits eingelesen). Ersetzen Sie nun
 
 Nützliche R Funktionen:
 
-- `c(1,2,3,4,9)` bildet einen Vektor mit dem Inhalt 1,2,3,4.
+- `c(1,2,3,4,9)` bildet einen Vektor mit dem Inhalt 1,2,3,4,9.
 - `c(1:4,9)` bildet den gleichen Vektor.
 - `which(9 == c(1:4,9) )` gibt an, an welcher Stelle der Vektor dem Wert 9 entspricht (also = 5).
 
@@ -169,7 +169,7 @@ Nützliche R Funktionen:
 Ersetzen Sie die NAs in beiden Spalten db und fb durch den gleitenden 10er-Durchschnitt der jeweiligen Spalte.
 
 Die NA-Stellen finden Sie über: 
-`aktien[is.na(aktien$db)]`
+`aktien$Date[is.na(aktien$db)]`
 
 Für Facebook analog.
 
@@ -532,7 +532,7 @@ x_t <- aktien$db[2:length(aktien$db)]
 # Berechnung der Rendite
 logRenditeDB <- log(x_t) - log(x_tminus1)
 # Geben Sie hier die berechnete Rendite in der Konsole aus
-
+logRenditeDB
 
 
 ```
@@ -642,7 +642,7 @@ plot(aktien$Date, aktien$Open, type = "l", main = "Facebook Aktie 2016-2017", xl
 
 # Funktion zur Berechnung der Rendite
 rendite <- function(zeitreihe){ 
-  r <- zeitreihe[1:length(zeitreihe)-1];  
+  r <- zeitreihe[1:(length(zeitreihe)-1)];  
   ren <- zeitreihe[2:length(zeitreihe)];
   ren <- (ren - r) / r;
   return(ren)     
@@ -702,7 +702,7 @@ aktien <- aktien[order(aktien$Date),]
 
 # Funktion zur Berechnung der Rendite
 rendite <- function(zeitreihe){ 
-  r <- zeitreihe[1:length(zeitreihe)-1];  
+  r <- zeitreihe[1:(length(zeitreihe)-1)];  
   ren <- zeitreihe[2:length(zeitreihe)];
   ren <- (ren - r) / r;
   return(ren)     
@@ -728,10 +728,10 @@ aktien[ , "Rendite"] <- rDbAktien
 *** =solution
 ```{r}
 # Erstellen Sie ein Histogramm und setzen Sie breaks = 20.
-hist(aktien$ Rendite, breaks = 20, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
+hist(aktien$Rendite, breaks = 20, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
 
 # Erstellen Sie das Histogramm mit breaks = 40.
-hist(aktien$ Rendite, breaks = 40, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
+hist(aktien$Rendite, breaks = 40, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
 
 ```
 
