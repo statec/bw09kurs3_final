@@ -31,7 +31,7 @@ c(1:5)
 # Wichtig: In dem auskommentierten Teil am Anfang dieses Skriptes finden Sie weitere Hinweise, wie die Aufgabe zu lösen ist.
 # Im vorliegenden Beispiel lautet die Anweisung, die Lösung unter dem Objekt *testvektor* zu speichern.
 
-testvektor<- 
+testvektor <- 
 ```
 
 *** =solution

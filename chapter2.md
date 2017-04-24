@@ -29,7 +29,7 @@ Ihnen wurde der Preisverlauf der Deutschen Bank Aktie eines Jahres als `CSV-Date
 ```{r}
 
 # die Datei liegt in https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv
-deutschebank<-
+deutschebank <-
 
 # Geben Sie die eingelesenen Daten in der Konsole aus
 
@@ -367,7 +367,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 --- type:NormalExercise lang:r xp:100 skills:1 key:860b4a4e28
 ## Berechnungen in R: Rendite (I)
 
-Gegeben ist wieder der Datensatz `aktien` (bereits eingelesen). Nun sollen die Renditen für jeden Tag der Zeitreihe berechnet werden. 
+Gegeben ist wieder der Datensatz `aktien` (bereits eingelesen). Nun sollen die diskreten Renditen für jeden Tag der Zeitreihe berechnet werden. 
 
 Vektoren können in R einfach elementweise voneinander subtrahiert werden, solange sie die gleiche Dimension haben. 
 
@@ -459,7 +459,7 @@ success_msg("Sehr gut!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:ce73d9c96b
 ## Berechnungen in R: Rendite (II)
 
-Der Datensatz liegt in `aktien`. Nun sollen die logarithmischen Renditen für jeden Tag berechnet werden.
+Der Datensatz liegt in `aktien`. Nun sollen die stetigen (logarithmischen) Renditen für jeden Tag berechnet werden.
 
 Tipps:
 
@@ -584,7 +584,7 @@ aktien <- aktien[order(aktien$Date),]
 
 *** =sample_code
 ```{r}
-plot(aktien$Date, aktien$Open, type = "l", main = "Facebook Aktie 2016-2017", xlab = "Datum", ylab = "Eroeffnungspreis ($)")
+plot( __ , __ , type = __ , main = __ , xlab = "Datum", ylab = __ )
 
 ```
 
@@ -669,7 +669,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:5e209754d2
 ## Histogramm
-Ein Datensatz mit den berechneten Renditen für die Deutsche Bank Aktie ist bereits eingelesen. Erstellen Sie ein Histogramm über die Verteilung der Renditen. 
+Der Datensatz `aktien` mit den berechneten Renditen für die Deutsche Bank Aktie ist bereits eingelesen. Erstellen Sie ein Histogramm über die Verteilung der Renditen. 
 
 Nutzen Sie die Funktion zum Erstellen eines Histogramms ist `hist(x,...)`.
 
