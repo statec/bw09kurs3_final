@@ -552,7 +552,7 @@ success_msg("Sehr gut!")
 
 In R gibt es viele Möglichkeiten, Daten grafisch darzustellen. In früheren Aufgaben haben Sie bereits einige Plots gesehen. Solche Plots sollen in dieser Aufgabe nun von Ihnen erstellt werden.
 
-Verwenden Sie `plot(x,y, ...)` um die Zeitreihe der Facebook-Aktie zu plotten. Verwenden Sie den Eröffnungspreis (Open). 
+Verwenden Sie `plot(x,y, ...)` um die Zeitreihe der Facebook-Aktie zu plotten. Verwenden Sie den Eröffnungspreis (Open) im Datensatz `aktien`. 
 Hilfe zum `plot` Befehl und den Eingabemöglichkeiten finden Sie, indem Sie `?plot()` in der Konsole eingeben. 
 
 *** =instructions
