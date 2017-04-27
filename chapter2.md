@@ -19,7 +19,6 @@ Ihnen wurde der Preisverlauf der Deutschen Bank Aktie eines Jahres als `CSV-Date
 *** =hint
 - Nutzen Sie die `read.csv()` Funktion.
 - Setzen Sie den Pfad als Argument der Funktion `read.csv()` in "Anführungszeichen".
-- Zum Ausgeben in der Konsole reicht `deutschebank`.
 
 *** =pre_exercise_code
 ```{r}
@@ -31,7 +30,6 @@ Ihnen wurde der Preisverlauf der Deutschen Bank Aktie eines Jahres als `CSV-Date
 # die Datei liegt in https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv
 deutschebank <-
 
-# Geben Sie die eingelesenen Daten in der Konsole aus
 
 ```
 
@@ -40,8 +38,6 @@ deutschebank <-
 # der Pfad der Datei ist 
 deutschebank <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv")
 
-# Schauen Sie sich die Daten in der Konsole an
-deutschebank
 
 ```
 
@@ -49,7 +45,7 @@ deutschebank
 ```{r}
 test_function("read.csv", args = c("file"))
 test_object("deutschebank")
-test_output_contains("deutschebank")
+#test_output_contains("deutschebank")
 test_error()
 success_msg("Sehr gut!")
 
@@ -77,7 +73,6 @@ Ergänzen Sie die fehlenden Werte direkt im Datensatz `aktien`.
 
 - `na.rm = TRUE` entfernt die NA Felder, zur Berechnung des Durchschnitts.
 - `is.na(daten)` findet die NAs in den daten.
--  Zur Ausgabe in der Konsole können Sie auch `print(Objekt)` nutzen
 
 *** =pre_exercise_code
 ```{r}
@@ -108,16 +103,18 @@ aktien$Date <- as.Date(aktien$Date)
 *** =sample_code
 ```{r}
 # Schaue, an welchen Tagen sich NAs befinden
-aktien$Date[is.na(aktien$fb)]
-aktien$Date[is.na(aktien$db)]
+aktien$Date[is.na(aktien$db)] # entspricht Zeile 7 und 145 im Datensatz
+aktien$Date[is.na(aktien$fb)] # entspricht Zeile 197 und 222 im Datensatz
 
 # Ersetzen Sie NAs in der Spalte 'db' durch den Durchschnitt der Spalte
-aktien$___[is.na(___)] <- ___(___, na.rm = TRUE)
+
+mittelwert_db <- ___(___, na.rm = TRUE)
+
+aktien$___[ 7 ] <- mittelwert_db
+aktien$___[___] <- ___
 
 # Ersetzen Sie NAs in der Spalte 'fb' durch den Durchschnitt der Spalte
 
-
-# Geben Sie die geänderten Spalten in der Konsole aus
 
 
 ```
@@ -134,9 +131,6 @@ aktien$db[is.na(aktien$db)] <- mean(aktien$db, na.rm = TRUE)
 # Ersetzen Sie NAs in der Spalte 'fb' durch den Durchschnitt der Spalte
 aktien$fb[is.na(aktien$fb)] <- mean(aktien$fb, na.rm = TRUE)
 
-# Geben Sie die geänderten Spalten in der Konsole aus
-aktien$db
-aktien$fb
 
 ```
 
@@ -146,8 +140,6 @@ aktien$fb
 test_function("mean", index = 1, args = c("x", "na.rm"))
 test_function("mean", index = 2, args = c("x", "na.rm"))
 
-test_output_contains("aktien$db")
-test_output_contains("aktien$fb")
 test_object("aktien")
 test_error()
 success_msg("Sehr gut!")
@@ -175,9 +167,6 @@ Für Facebook analog.
 
 *** =hint
 
-NAs deutschebank (db): "2016-04-14" "2016-10-31"
-
-NAs facebook (fb): "2017-01-16" "2017-02-20"
 
 
 *** =pre_exercise_code
@@ -213,31 +202,21 @@ aktien <- aktien[order(aktien$Date),]
 # Finde die Zeile mit dem ersten Feiertag "2016-04-14" und speichere die Zeilennummer in index1
 index1 <- which(___ == "___")
 # durch Durchschnitt ersetzen
-aktien$db[___] <- ___(c(aktien$db[c((index1-___):(index1-___),(index1+___):(index1+___))]))
+aktien$db[___] <- ___( aktien$db[c((index1-___):(index1-___),(index1+___):(index1+___))] )
 # Überprüfe neuen Wert
 aktien$db[___]
 
 
-# Finde die Zeile mit dem zweiten Feiertag "2016-10-31" und speichere die Zeilennummer in index2
-
-# durch Durchschnitt ersetzen
-
-# Überprüfe neuen Wert
 
 
 ### facebook (fb)
-# Finde die Zeile mit dem ersten Feiertag "2017-01-16" und speichere die Zeilennummer in index3
+# Finde die Zeile mit dem ersten Feiertag "2017-01-16" und speichere die Zeilennummer in index2
 
 # durch Durchschnitt ersetzen
 
 # Überprüfe neuen Wert
 
 
-# Finde die Zeile mit dem zweiten Feiertag "2017-02-20" und speichere die Zeilennummer in index4
-
-# durch Durchschnitt ersetzen
-
-# Überprüfe neuen Wert
 
 
 
@@ -253,28 +232,16 @@ aktien$db[index1] <- mean(c(aktien$db[c((index1-5):(index1-1),(index1+1):(index1
 # Neuer Wert
 aktien$db[index1]
 
-# Finde den Index 2
-index2 <- which(aktien$Date == "2016-10-31")
-# durch Durchschnitt ersetzen
-aktien$db[index2] <- mean(c(aktien$db[c((index2-5):(index2-1),(index2+1):(index2+5))]))
-# Neuer Wert
-aktien$db[index2]
-
 
 # Facebook 
 # Finde den Index 3
-index3 <- which(aktien$Date == "2017-01-16")
+index2 <- which(aktien$Date == "2017-01-16")
 # durch Durchschnitt ersetzen
-aktien$fb[index3] <- mean(c(aktien$fb[c((index3-5):(index3-1),(index3+1):(index3+5))]))
+aktien$fb[index2] <- mean(c(aktien$fb[c((index2-5):(index2-1),(index2+1):(index2+5))]))
 # Neuer Wert
-aktien$fb[index3]
+aktien$fb[index2]
 
-# Finde den Index 4
-index4 <- which(aktien$Date == "2017-02-20")
-# durch Durchschnitt ersetzen
-aktien$fb[index4] <- mean(c(aktien$fb[c((index4-5):(index4-1),(index4+1):(index4+5))]))
-# Neuer Wert
-aktien$fb[index4]
+
 
 ```
 
@@ -282,20 +249,13 @@ aktien$fb[index4]
 ```{r}
 test_function("which", args = "x", index = 1)
 test_function("which", args = "x", index = 2)
-test_function("which", args = "x", index = 3)
-test_function("which", args = "x", index = 4)
 test_object("index1")
 test_object("index2")
-test_object("index3")
-test_object("index4")
 test_function("mean", index = 1, args = c("x"))
 test_function("mean", index = 2, args = c("x"))
-test_function("mean", index = 3, args = c("x"))
-test_function("mean", index = 4, args = c("x"))
 test_output_contains("aktien$db[index1]")
-test_output_contains("aktien$db[index2]")
-test_output_contains("aktien$fb[index3]")
-test_output_contains("aktien$fb[index4]")
+test_output_contains("aktien$fb[index2]")
+
 test_error()
 success_msg("Sehr gut!")
 ```
@@ -383,7 +343,7 @@ Berechnen Sie die Rendite für die Deutsche Bank für jeden Tag des gegebenen Da
 *** =hint
 
 - Achten Sie darauf, dass die beiden Vektoren die gleiche Länge haben müssen.
-- Die Länge eines Vektors bekommen Sie durch `length(vektor)`.
+- Die Länge eines Vektors bekommen Sie durch `length(vektor)` und ergibt 254.
 
 *** =pre_exercise_code
 ```{r}
@@ -424,7 +384,6 @@ x_tminus1 <-
 x_t <- 
 # Berechnung der Rendite
 renditeDB <- 
-# Geben Sie hier die berechnete Rendite in der Konsole aus
 
 
 ```
@@ -440,8 +399,7 @@ x_t <- aktien$db[2:length(aktien$db)]
 # Berechnung der Rendite
 renditeDB <- (x_t - x_tminus1) / x_tminus1
 
-# Geben Sie hier die berechnete Rendite in der Konsole aus
-renditeDB
+
 
 ```
 
@@ -450,7 +408,6 @@ renditeDB
 test_object("x_tminus1")
 test_object("x_t")
 test_object("renditeDB")
-test_output_contains("renditeDB")
 test_error()
 success_msg("Sehr gut!")
 
@@ -478,7 +435,7 @@ Berechnen Sie die log-Rendite für die Deutsche Bank für jeden Tag des gegebene
 *** =hint
 
 - Achten Sie darauf, dass die beiden Vektoren die gleiche Länge haben müssen.
-- Die Länge eines Vektors bekommen Sie durch `length(vektor)`.
+- Die Länge eines Vektors bekommen Sie durch `length(vektor)` und ergibt 254.
 
 
 *** =pre_exercise_code
@@ -519,7 +476,7 @@ x_tminus1 <-
 x_t <- 
 # Berechnung der Rendite
 logRenditeDB <- 
-# Geben Sie hier die berechnete log-Rendite in der Konsole aus
+
 
 ```
 
@@ -531,8 +488,6 @@ x_tminus1 <- aktien$db[1:(length(aktien$db)-1)]
 x_t <- aktien$db[2:length(aktien$db)]
 # Berechnung der Rendite
 logRenditeDB <- log(x_t) - log(x_tminus1)
-# Geben Sie hier die berechnete Rendite in der Konsole aus
-logRenditeDB
 
 
 ```
@@ -542,7 +497,7 @@ logRenditeDB
 test_object("x_tminus1")
 test_object("x_t")
 test_object("logRenditeDB")
-test_output_contains("logRenditeDB")
+
 test_error()
 success_msg("Sehr gut!")
 ```

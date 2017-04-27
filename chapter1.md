@@ -71,7 +71,7 @@ Ein einfaches Beispiel soll das Einlesen von Daten mit `read.csv()` demonstriere
 ```{r}
 # die Daten liegen in https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv
 
-# Zur Überprüfung des Ergebnisses müssen die Daten in einem Objekt mit dem Namen "test" abgespeichert werden.
+test <- 
 ```
 
 *** =solution
