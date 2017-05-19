@@ -3,7 +3,7 @@ title       : Termin 3 (inclass)
 description : Kontrollstrukturen und Funktionen in R
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:a89b75f3c5
-## 1. if-Abfrage(I)
+## if-Abfrage(I)
 Gegeben ist der folgende R-Code:
 
 `a <- 1`
@@ -31,7 +31,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:a545b07906
-## 2. if-Abfrage(II)
+## if-Abfrage(II)
 Im Beispielcode ist eine if-Abfrage gegeben. Führen Sie diese aus und überlegen Sie, was passiert ist.
 
 Tipp: Wenn Sie bestimmte Codeabschnitte, also mehrere Zeilen auf einmal, in der Konsole ausführen möchten, markieren Sie den gewünschten Codeabschnitt und drücken Sie gleichzeitig `Strg` und `Enter`.
@@ -94,7 +94,7 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe02cb131f
-## 3. if-Abfrage(III)
+## if-Abfrage(III)
 Ihnen ist wieder eine if-Abfrage gegeben, nur die Bedingung fehlt. 
 
 Je nachdem ob die Variable `note` kleiner oder gleich 4 ist, soll die Variable `ergebnis` den Wert "bestanden" oder "nicht bestanden" beinhalten.
@@ -137,7 +137,7 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:9dcf2f1327
-## 4. if-Abfrage(IV)
+## if-Abfrage(IV)
 Nun sollen Sie Ihre erste eigene if-Abfrage schreiben. Gegeben sind die Variablen a und b. 
 
 Die Variable c ist die Differenz von a und b und soll in unserem Beispiel nur positive Werte annehmen. Es muss daher vor der Berechnung getestet werden, ob a oder b größer ist.
@@ -186,7 +186,7 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:4cc9a15a6f
-## 5. if-Abfrage(V)
+## if-Abfrage(V)
 Gegeben ist Ihnen die Variablen `a` und `b`. Wenn `a` ungleich null ist, dann soll `b` durch `a` geteilt werden. 
 
 
@@ -227,8 +227,8 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:4ed9623928
-## 6. for-Schleife
-Die Fibonaccifolge eine Zahlenfolge von natürlichen Zahlen, die mit zwei Einsen beginnt. Die weiteren Zahlen der Folge sind immer die Summe der beiden vorangegangenen Zahlen, 
+## for-Schleife
+Die Fibonaccifolge ist eine Zahlenfolge von natürlichen Zahlen, die mit zwei Einsen beginnt. Die weiteren Zahlen der Folge sind immer die Summe der beiden vorangegangenen Zahlen, 
 
 
 also 1, 1, 2, 3, ...
@@ -282,7 +282,7 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6e2eab47f2
-## 7. while-Schleife
+## while-Schleife
 Hier sehen Sie eine while-Schleife, die die Fakultät von `zahl` berechnet. Füllen Sie die Lücken im vorgegebenen Code.
 
 Tipp:
@@ -344,9 +344,80 @@ test_error()
 
 ```
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:bc6c49a486
+## Funktionen (I)
+In den Folien haben Sie gesehen, wie man den Absolutwert einer Zahl berechnen kann. Um eine solche Abfrage immer wieder nutzen zu können, ist es sinnvoll, Sie in eine Funktion einzubetten.
+
+Funktionen haben Eingabeparameter und Ausgabeparameter. Als Eingabe soll ein beliebiger `wert` gelesen werden, die Ausgabe soll den Absolutbetrag `absolut_wert` zurück geben.
+
+
+*** =instructions
+- Erstellen Sie eine Funktion `absolut()` mit Eingabeparameter `wert`.
+- Die Funktion fragt über eine if-Abfrage ab, ob der Wert negativ ist oder nicht und wandelt ihn zu einer positiven Zahl um (dieser Teil kann vollständig aus den Folien übernommen werden).
+- Sie gibt den berechneten `absolut_wert` zurück.
+- Testen Sie ihre Funktion an mehreren Beispielen.
+
+*** =hint
+- Die Struktur einer Funktion: 
+- `neue_funktion <- function(Eingabeparameter){...working ...return (Ausgabeparameter)}`
+
+*** =pre_exercise_code
+```{r}
+wert1 <- -10
+ergebnis1 <- 10
+wert2 <- 5
+ergebnis2 <- 5
+```
+
+*** =sample_code
+```{r}
+# Erstellung der Funktion
+absolut <- function(wert){
+    if(wert___){
+        
+    }else {
+        
+    }
+    return(___)
+}
+
+# Testen Sie ihre Funktion für "wert1" (bereits eingelesen)
+absolut(wert1)
+# Testen Sie ihre Funktion für "wert2" (bereits eingelesen)
+absolut(wert2)
+
+```
+
+*** =solution
+```{r}
+# Erstellung der Funktion
+absolut <- function(wert){
+    if(wert<0){
+        absolut_wert <- -wert
+    }else {
+        absolut_wert <- wert
+    }
+    return(absolut_wert)
+}
+# Testen Sie ihre Funktion aus, in dem Sie z.B. absolut(-4) testen.
+absolut(-4)
+# Testen Sie ihre Funktion für "wert1"
+absolut(wert1)
+# Testen Sie ihre Funktion für "wert2"
+absolut(wert2)
+
+```
+
+*** =sct
+```{r}
+test_output_contains("ergebnis1")
+test_output_contains("ergebnis2")
+test_error()
+
+```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:be80e0c720
-## 8. Funktionen (I)
+## Funktionen (II)
 In der 4. Aufgabe haben Sie die positive Differenz zweier Zahlen gebildet. Betten Sie diese Abfrage nun in eine Funktion ein.
 
 Eine Funktion bekommt die Zahlen `a` und `b` als Eingabeparameter und soll nun die positive Differenz der beiden berechnen. 
@@ -403,82 +474,11 @@ test_output_contains("ergebnis1")
 test_output_contains("ergebnis2")
 test_error()
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:bc6c49a486
-## 9. Funktionen (II)
-In den Folien haben Sie gesehen, wie man den Absolutwert einer Zahl berechnen kann. Um eine solche Abfrage immer wieder nutzen zu können, ist es sinnvoll, Sie in eine Funktion einzubetten.
 
-Funktionen haben Eingabeparameter und Ausgabeparameter. Als Eingabe soll ein beliebiger `wert` gelesen werden, die Ausgabe soll den Absolutbetrag `absolut_wert` zurück geben.
-
-
-*** =instructions
-- Erstellen Sie eine Funktion `absolut()` mit Eingabeparameter `wert`.
-- Die Funktion fragt über eine if-Abfrage ab, ob der Wert negativ ist oder nicht und wandelt ihn zu einer positiven Zahl um (dieser Teil kann vollständig aus den Folien übernommen werden).
-- Sie gibt den berechneten `absolut_wert` zurück.
-- Testen Sie ihre Funktion an mehreren Beispielen.
-
-*** =hint
-- Die Struktur einer Funktion: 
-- `neue_funktion <- function(Eingabeparameter){...working ...return (Ausgabeparameter)}`
-
-*** =pre_exercise_code
-```{r}
-wert1 <- -10
-ergebnis1 <- 10
-wert2 <- 5
-ergebnis2 <- 5
-```
-
-*** =sample_code
-```{r}
-# Erstellung der Funktion
-absolut <- function(wert){
-    if(wert___){
-        
-    }else {
-        
-    }
-    return(___)
-}
-# Testen Sie ihre Funktion aus, in dem Sie z.B. absolut(-4) testen.
-absolut(-4)
-# Testen Sie ihre Funktion für "wert1"
-
-# Testen Sie ihre Funktion für "wert2"
-
-
-```
-
-*** =solution
-```{r}
-# Erstellung der Funktion
-absolut <- function(wert){
-    if(wert<0){
-        absolut_wert <- -wert
-    }else {
-        absolut_wert <- wert
-    }
-    return(absolut_wert)
-}
-# Testen Sie ihre Funktion aus, in dem Sie z.B. absolut(-4) testen.
-absolut(-4)
-# Testen Sie ihre Funktion für "wert1"
-absolut(wert1)
-# Testen Sie ihre Funktion für "wert2"
-absolut(wert2)
-
-```
-
-*** =sct
-```{r}
-test_output_contains("ergebnis1")
-test_output_contains("ergebnis2")
-test_error()
-
-```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:c45d01f88e
-## 10. Funktionen (III)
-In den Folien haben Sie gesehen, wie eine Funktion für den gleitenden 5-er Durchschnitt aussieht. In dieser Aufgabe sollen Sie eine Funktion schreiben, die den gleitenden x-er Durchschnitt für eine beliebige ungerade Zahl x berechnet und zurück gibt. 
+## Funktionen (III)
+In den Folien haben Sie gesehen, wie eine Funktion für den gleitenden 5-er Durchschnitt aussieht. In dieser Aufgabe sollen Sie eine Funktion schreiben, die den gleitenden Durchschnitt für eine beliebige ungerade Fensterlänge berechnet und zurück gibt. 
 
 Als Eingabe soll diese Funktion einen vektor `zahlenreihe` und einen Wert `x` erhalten. Es soll davon ausgegangen werden, dass x ein natürliche ungerade Zahl ist (muss nicht extra geprüft werden). 
 
