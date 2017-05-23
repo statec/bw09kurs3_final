@@ -533,7 +533,7 @@ gleitender_durchschnitt <- function(zeitreihe, x){
     n <- (x-1)/2
     for(i in 1:laenge){
         # Darf nicht für die ersten n Zahlen berechnet werden
-        if( i <= n | i >= (laenge-n)){
+        if( i <= n | i > (laenge-n)){
             ergebnis[i] <- zeitreihe[i]
         }else{
             ergebnis[i] <- mean( zeitreihe [(i - n) : (i + n)])
