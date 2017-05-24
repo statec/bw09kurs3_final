@@ -510,7 +510,7 @@ gleitender_durchschnitt <- function(___){
     ergebnis <- ___
     
     for(i in ___){
-        if( i <= ___ | i >= ___){
+        if( i <= ___ | i > ___){
             ergebnis[i] <- ___
         }else{
             ergebnis[i] <- ___
