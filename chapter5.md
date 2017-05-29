@@ -48,7 +48,7 @@ aktuell <-
 # Entferne alle Spalten und Zeilen mit Klausurterminen die vor dem 01.05.17 stattgefunden haben. 
 # Sortieren Sie den neuen Datensatz nach den aktuellen Klausurterminen.
 
-aktuell <- filter(kurse, klausurtermin_2017 > "2017-05-01") %>% 
+aktuell <- filter(kurse, klausurtermin_2017 < "2017-05-01") %>% 
     select(kurs, klausurtermin_2017, kursnummer) %>% 
     arrange(klausurtermin_2017)
 
