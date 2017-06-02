@@ -243,7 +243,7 @@ diamonds <- as.data.frame(diamonds)
 ```{r}
 library(ggplot2)
 
-# Erstellen Sie eine lineare Regression
+# Fügen Sie einen linearen Trend ein
 
 
 
