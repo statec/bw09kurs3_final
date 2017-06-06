@@ -488,24 +488,24 @@ Testen Sie Ihre Funktion mit dem (eingelesenen) Datensatz `aktien_daten`.
 
 *** =pre_exercise_code
 ```{r}
-library(ggplot)
+library(ggplot2)
 library(tidyr)
 library(dplyr)
 # random Zahlen
 anzahl <- 50
-preis_apple <- c()
-preis_apple <- runif(anzahl, 4.5, 8)
-preis_fb  <- c()
-preis_fb <- runif(anzahl, 5.5, 9)
-preis_henkel <- c()
-preis_henkel <- runif(anzahl, 3, 4)
+preis_aktie1 <- c()
+preis_aktie1 <- runif(anzahl, 4.5, 8)
+preis_aktie2  <- c()
+preis_aktie2 <- runif(anzahl, 5.5, 9)
+preis_aktie3 <- c()
+preis_aktie3 <- runif(anzahl, 3, 4)
 
-aktien_daten <- data.frame( tag = c(1:anzahl), preis_apple , preis_fb, preis_henkel) 
+aktien_daten <- data.frame( tag = c(1:anzahl), preis_aktie1 , preis_aktie2, preis_aktie3) 
 ``` 
 
 *** =sample_code
 ```{r}
-library(ggplot)
+library(ggplot2)
 library(tidyr)
 library(dplyr)
 
@@ -524,7 +524,7 @@ erstelle_grafik <- function( daten , xAchse,  var1, var2, var3){
 }
 
 #teste die Funktion
-erstelle_grafik( aktien_daten, "tag", "preis_apple" , "preis_fb", "preis_henkel" )
+erstelle_grafik( aktien_daten, "tag", "preis_aktie1" , "preis_aktie2", "preis_aktie3" )
 ```
 
 *** =solution
@@ -536,7 +536,7 @@ erstelle_grafik <- function( daten , xAchse,  var1, var2, var3){
   geom_line()
 }
 # Ausführen an aktien_daten
-erstelle_grafik( aktien_daten, "tag", "preis_apple" , "preis_fb", "preis_henkel" )
+erstelle_grafik( aktien_daten, "tag", "preis_aktie1" , "preis_aktie2", "preis_aktie3" )
 
 ```
 
