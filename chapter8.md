@@ -489,6 +489,7 @@ Testen Sie Ihre Funktion mit dem (eingelesenen) Datensatz `aktien_daten`.
 *** =pre_exercise_code
 ```{r}
 library(ggplot)
+library(tidyr)
 library(dplyr)
 # random Zahlen
 anzahl <- 50
@@ -505,6 +506,7 @@ aktien_daten <- data.frame( tag = c(1:anzahl), preis_apple , preis_fb, preis_hen
 *** =sample_code
 ```{r}
 library(ggplot)
+library(tidyr)
 library(dplyr)
 
 # Beispiel für Funktionen mit dplyr 
