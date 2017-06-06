@@ -316,7 +316,7 @@ Nutzen Sie eine Glättungsfunktion für eine Teilstichprobe von `diamonds` .
 Info: Bei der span Eingabe von span = 0.1 werden Warnungen in der Konsole ausgegeben. Diese können Sie ignorieren.
 
 *** =instructions
-- Erstellen Sie einen Plot mit `geom_line`.
+- Erstellen Sie einen Plot mit `geom_point`.
 - Glätten Sie die Funktion mit `geom_smooth`.
 - Setzen Sie das span Argument einmal auf 0.8 und einmal auf 0.1 (Warnungen ignorieren)
 - Vergleichen Sie die Ergebnisplots und achten Sie besonders auf die Wirkung der verschiedenen Eingaben für den "span"-Parameter.
