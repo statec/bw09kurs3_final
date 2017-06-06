@@ -129,7 +129,7 @@ Probieren Sie nun das geom `geom_line` aus.
 
 *** =instructions
 - Erstellen Sie einen Plot über die Karatzahl auf der x-Achse und dem Preis auf der y-Achse.
-- Fügen Sie ein "geom_line" hinzu, färben Sie diese blau.
+- Fügen Sie ein "geom_line" hinzu, färben Sie diese blau (mit color).
 - Betiteln Sie die x-Achse mit "Karat" und die y-Achse mit "Preis".
 
 *** =hint
@@ -178,7 +178,7 @@ test_error()
 
 Die Qualität der Diamanten ist in der Variable "cut" gespeichert. 
 
-Erstellen Sie ein Histogramm.
+Erstellen Sie eine Häufigkeitsverteilung mit `geom_bar()`.
 
 *** =instructions
 - Erstellen Sie ein Balkendiagramm, welches die Häufigkeit der verschiedenen Qualitäten der Edelsteine zeigt (Histogramm).
@@ -454,15 +454,16 @@ library(ggplot2)
 *** =solution
 ```{r}
 # Boxplot erstellen
-ggplot(data = diamonds)+
-  geom_boxplot(mapping = aes(x = color, y = carat), outlier.color = "red")
+
+ggplot(data = diamonds, mapping = aes(x = color, y= carat) )+
+  geom_boxplot( outlier.color = "red" )
 
 ```
 
 *** =sct
 ```{r}
-test_function("ggplot", args = c("data"))
-test_function("geom_boxplot", args = c("mapping", "outlier.color"))
+test_function("ggplot", args = c("data","mapping"))
+test_function("geom_boxplot", args = c("outlier.color"))
 test_function("aes")
 test_error()
 
