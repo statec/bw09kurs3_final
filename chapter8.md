@@ -204,14 +204,14 @@ library(ggplot2)
 *** =solution
 ```{r}
 # Plotten Sie mit ggplot()
-ggplot(data = diamonds)+
-    geom_bar(mapping = aes(x = cut))
+ggplot(data = diamonds, mapping = aes(x = cut))+
+    geom_bar( )
 ```
 
 *** =sct
 ```{r}
-test_function("ggplot", args = c("data"))
-test_function("geom_bar", args = c("mapping"))
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_bar")
 test_error()
 ```
 
@@ -225,7 +225,7 @@ Erweitern Sie die Grafik durch einen linearen Trend um einen Eindruck über die 
 Um mehr über die Eingabeparameter von geom\_smooth zu erfahren, geben Sie `?geom_smooth()` in der Konsole ein.
 
 *** =instructions
-- Erstellen Sie einen Punkte-Plot mit der Karat Zahl auf der x-Achse und de Preis auf der y Achse.
+- Erstellen Sie einen Punkte-Plot mit der Karat Zahl auf der x-Achse und de Preis auf der y-Achse.
 - Fügen Sie das geom hinzu, was für eine Glättung der Funktion sorgt.
 - Um eine lineare Regression zu bekommen, müssen Sie als Methode "lm" wählen.
 
