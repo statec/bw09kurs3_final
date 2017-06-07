@@ -489,7 +489,7 @@ library(ggplot2)
 library(tidyr)
 library(dplyr)
  
-daten <- read.csv( http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/daten.csv )
+daten <- read.csv(file="http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/daten.csv", sep=";")
 ``` 
 
 *** =sample_code
@@ -508,7 +508,6 @@ daten_tidy <-
 
 *** =solution
 ```{r}
-daten <- read.csv(file="../Desktop/daten.csv", sep=";")
 
 daten_tidy <- gather( daten , Close_google, Close_fb, Close_apple, key="titel", value="Schlusskurs")
 
