@@ -469,20 +469,16 @@ test_error()
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:8d133ae583
-## ggplot und Funktionen
+## ggplot und dplyr
 
-Definieren Sie eine Funktion (siehe Termin 3), die dem Anwender das mühsame Definieren von `aes` und geoms abnimmt.
+Erstellen Sie aus dem bereits eingelesen Datensatz `daten` zunächst eine "aufgeräumte" Form. 
 
-Dabei beinhalten die Spalten des Datensatzes mehrere Variablen, die in der Grafik erscheinen sollen.
-
-Testen Sie Ihre Funktion mit dem (eingelesenen) Datensatz `aktien_daten`. 
+Stellen Sie anschließend mit `ggplot` drei Zeitreihen in einer Grafik dar.
 
 *** =instructions
-- gehen Sie von drei Variablen aus, die in einer Grafik verarbeitet werden.
-- bei der Übergabe sollen nur Variablennamen aus dem Datensatz als Argument übergeben werden.
-- verwenden Sie die `gather` Befehl um die korrekte Form herzustellen.
-- wichtig: beachten Sie die korrekte Anwendung des `get()` Befehls wie im Beispiel.  
-- rufen Sie die ggplot Funktionen innerhalb der Funktion auf.
+- verschaffen Sie sich zunächst einen Überblick über den Datensatz `daten`
+- räumen Sie den Datensatz auf
+- nutzen Sie das `group` Argument in  `ggplot` und `geom_line`
 
 *** =hint
 
@@ -492,16 +488,8 @@ Testen Sie Ihre Funktion mit dem (eingelesenen) Datensatz `aktien_daten`.
 library(ggplot2)
 library(tidyr)
 library(dplyr)
-# random Zahlen
-anzahl <- 50
-preis_aktie1 <- c()
-preis_aktie1 <- runif(anzahl, 4.5, 8)
-preis_aktie2  <- c()
-preis_aktie2 <- runif(anzahl, 5.5, 9)
-preis_aktie3 <- c()
-preis_aktie3 <- runif(anzahl, 3, 4)
-
-aktien_daten <- data.frame( tag = c(1:anzahl), preis_aktie1 , preis_aktie2, preis_aktie3) 
+ 
+daten <- read.csv( http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/daten.csv )
 ``` 
 
 *** =sample_code
@@ -510,43 +498,28 @@ library(ggplot2)
 library(tidyr)
 library(dplyr)
 
-# Beispiel für Funktionen mit dplyr 
-#test_func <- function( daten,  x , y){
-#    ggplot(data = daten, mapping = aes(x = get(x) , y = get(y) ) )+
-#     ...
-#}
+## Aufräumen des Datensatzes
+daten_tidy <- 
 
-# Funktion
-erstelle_grafik <- function( daten , xAchse,  var1, var2, var3){
+## Darstellung mit ggplot
 
-  
-  
-  
-}
 
-#teste die Funktion
-erstelle_grafik( aktien_daten, "tag", "preis_aktie1" , "preis_aktie2", "preis_aktie3" )
 ```
 
 *** =solution
 ```{r}
-# Funktion
-erstelle_grafik <- function( daten , xAchse,  var1, var2, var3){
-  daten_mod <- gather( daten, get(var1), get(var2), get(var3), key = "kategorie" , value = "werte")
-  ggplot(data = daten_mod, mapping = aes(x = get(xAchse) , y = werte, group = kategorie, color = kategorie))+
+daten <- read.csv(file="../Desktop/daten.csv", sep=";")
+
+daten_tidy <- gather( daten , Close_google, Close_fb, Close_apple, key="titel", value="Schlusskurs")
+
+ggplot( data = daten_tidy, mapping = aes( x = Datum, y = Schlusskurs, group = titel )) +
   geom_line()
-}
-# Ausführen an aktien_daten
-erstelle_grafik( aktien_daten, "tag", "preis_aktie1" , "preis_aktie2", "preis_aktie3" )
 
 ```
 
 *** =sct
 ```{r}
 test_function("gather")
-test_function("ggplot")
+test_function("ggplot", args = c("data", "mapping"))
 test_function("geom_line")
-test_function_result("erstelle_grafik")
-test_function_definition("erstelle_grafik")
-test_error()
 ```
