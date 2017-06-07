@@ -478,7 +478,7 @@ Stellen Sie anschließend mit `ggplot` drei Zeitreihen in einer Grafik dar.
 *** =instructions
 - verschaffen Sie sich zunächst einen Überblick über den Datensatz `daten`
 - räumen Sie den Datensatz auf
-- nutzen Sie das `group` Argument in  `ggplot` und `geom_line`
+- nutzen Sie das `group` Argument in  ggplot und `geom_line`
 
 *** =hint
 
@@ -519,6 +519,6 @@ ggplot( data = daten_tidy, mapping = aes( x = Datum, y = Schlusskurs, group = ti
 *** =sct
 ```{r}
 test_function("gather")
-test_function("ggplot", args = c("data", "mapping"))
+test_function("ggplot")
 test_function("geom_line")
 ```
