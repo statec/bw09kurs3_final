@@ -520,6 +520,6 @@ ggplot( data = daten_tidy, mapping = aes( x = Datum, y = Schlusskurs, group = ti
 *** =sct
 ```{r}
 test_function("gather")
-test_function("ggplot")
+test_function("ggplot", args=("data"))
 test_function("geom_line")
 ```
