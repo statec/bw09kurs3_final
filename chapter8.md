@@ -181,7 +181,7 @@ Die Qualität der Diamanten ist in der Variable "cut" gespeichert.
 Erstellen Sie eine Häufigkeitsverteilung mit `geom_bar()`.
 
 *** =instructions
-- Erstellen Sie ein Balkendiagramm, welches die Häufigkeit der verschiedenen Qualitäten der Edelsteine zeigt (Histogramm).
+- Erstellen Sie ein Balkendiagramm, welches die Häufigkeit der verschiedenen Qualitäten der Edelsteine zeigt.
 
 *** =hint
 - Benutzen Sie `geom_bar`
@@ -409,6 +409,7 @@ library(ggplot2)
 ggplot(data = diamonds, mapping = aes(x = carat, y = price, group = cut, color = cut))+
   geom_point()
 
+
  
 ```
 
@@ -422,14 +423,14 @@ test_error()
 --- type:NormalExercise lang:r xp:100 skills:1 key:b9786438e0
 ## Grafiken mit mehreren Variablen (II)
 
-Erstellen Sie ein Boxplot über das Gewicht für die verschiedenen Farbkategorien.
+Erstellen Sie ein Boxplot über das Gewicht. Je nach Farbkategorie soll ein eigenes Boxplot erstellt werden. 
 
 Zur Erinnerung: Ein Boxplot ist ein Diagramm, welches die Verteilung einer oder mehrerer Merkmale grafisch darstellt. Man sieht so z.B. auf einen Blick Median, Quartile und Ausreißer.
 
 *** =instructions
-- Erstellen Sie mit ggplot einen Boxplot, welcher die Verteilung der Gewichte (carat) pro Farbe (color) erstellt.
+- Erstellen Sie mit ggplot einen Boxplot, welcher die Verteilung der Gewichte (y-Achse) pro Farbe (x-Achse) erstellt.
 - Finden Sie eigenständig das geom, welches einen Boxplot erstellt
-- Färben Sie die Ausreißer rot (`oulier.color = "red"`).
+- Färben Sie die Ausreißer rot (`outlier.color = "red"`).
 
 *** =hint
 - `geom_boxplot(mapping = aes(x  = ___, y = ___), outlier.color = "red")`
