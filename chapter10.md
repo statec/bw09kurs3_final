@@ -244,12 +244,6 @@ test_error()
 success_msg("Sehr gut!")
 ```
 
-
-
-
-
-
-
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:0d18979882
 ## Hypothesentests (I)
 Das wahre mittlere Jahreseinkommen einer Großstadt sei nun unbekannt. Rechnen Sie weiterhin mit einer Standardabweichung von 6500€.
@@ -336,11 +330,8 @@ Wie hoch ist die asymptotische Varianz des Mittelwertes dieser Stichprobe?
 ```{r}
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig! Hier gilt stets: Varianz = 2*freiheitsgrade."
-test_mc(correct = 2, feedback_msgs = c(msg_success, msg_bad, msg_bad))
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
 ```
-
-
-
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:20e949d5dc
 ## Monte Carlo Analyse (II)
@@ -418,5 +409,5 @@ legend("topright", c("check_zgs", "ZGS"), col=c("black", "red"))
 
 *** =sct
 ```{r}
-
+test_error()
 ```
