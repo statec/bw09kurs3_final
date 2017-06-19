@@ -1,4 +1,3 @@
-
 ---
 title       : Einheit 5 (inclass)
 description :  Wahrscheinlichkeitsrechnung und statistische Methoden (I)
@@ -111,12 +110,12 @@ p <- _____
 
 *** =solution
 ```{r}
-p<- pchisq( q = 8 , df= 4 ) - pchisq( q = 6 , df= 4 )
+p <- pchisq( q = 8 , df= 4 ) - pchisq( q = 6 , df= 4 )
 ```
 
 *** =sct
 ```{r}
-test_object( p ) 
+test_object("p") 
 test_error()
 success_msg("Sehr gut!")
 ```
@@ -124,7 +123,7 @@ success_msg("Sehr gut!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:2182f33994
 ## Statistische Verteilungen (IV)
 
-Sei X eine binomialverteilte Zufallsvariable mit n=50 und p= 0.1 .
+Sei X eine binomialverteilte Zufallsvariable mit n=50 und p= 0.1.
 
 *** =instructions
 - Wie hoch ist die Wahrscheinlichkeit, dass X die Werte 3, 6 oder 10 annimmt.
@@ -138,7 +137,6 @@ Sei X eine binomialverteilte Zufallsvariable mit n=50 und p= 0.1 .
 
 *** =sample_code
 ```{r}
-
 
 
 
@@ -156,7 +154,7 @@ p <- dbinom( x = 3 , size = 50, prob = 0.1) +     dbinom( x = 6 , size = 50, pro
 
 *** =sct
 ```{r}
-test_object( p ) 
+test_object("p") 
 test_error()
 success_msg("Sehr gut!")
 ```
@@ -280,7 +278,7 @@ pwert <- 2* pnorm( -abs( (32000 - 35000) /
 ```{r}
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig!"
-test_mc(correct = 4, feedback_msgs = c(msg_success, msg_bad, msg_bad))
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 ```
 
 
@@ -299,7 +297,7 @@ Führen Sie basierend auf der Behauptung des Herstellers einen einseitigen Hypot
 - Ablehnung der Hypothese auf Signifikanzniveau 10%
 
 *** =hint
- pwert <- pbinom(q = 355, size = 400, prob = 0.90)
+- pwert <- pbinom(q = 355, size = 400, prob = 0.90)
  
 *** =pre_exercise_code
 ```{r}
@@ -310,15 +308,8 @@ Führen Sie basierend auf der Behauptung des Herstellers einen einseitigen Hypot
 ```{r}
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig!"
-test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad))
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 ```
-
-
-
-
-
-
-
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:a015e94bb1
 ##  Monte Carlo Analyse (I)
