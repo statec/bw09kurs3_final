@@ -221,3 +221,46 @@ test_error()
 ```{r}
 
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:2dd5d51085
+## 5. Funktionen (II)
+Schreiben Sie eine Funktion, welche die Wurzel einer Zahl ausgibt. Wenn die Eingabe negativ ist, soll die Wurzel aus dem Absolutwert der Zahl gezogen werden.
+
+*** =instructions
+- die Funktion `abswurzel()` erhält eine Zahl als Argument.
+- Falls die eingegebene Zahl negativ ist, soll der Absolutwert der Zahl berechnet werden, andernfalls wird die Wurzel der Zahl berechnet.
+
+*** =hint
+- mit `sqrt()` kann man die Wurzel einer Zahl ziehen. 
+
+*** =pre_exercise_code
+```{r}
+n <- 2
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+# Funktion
+abswurzel <- function(zahl){
+  if(zahl < 0 ){ ergebnis <- sqrt(-zahl)}
+  else {ergebnis <- sqrt(zahl)}
+  return(ergebnis)
+}
+# Ausgabe Test für 4 und -4
+abswurzel(4)
+abswurzel(-4)
+
+```
+
+*** =sct
+```{r}
+test_function("abswurzel")
+test_output_contains("n")
+test_error()
+
+```
