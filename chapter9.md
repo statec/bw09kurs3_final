@@ -306,11 +306,12 @@ test_error()
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1827cd70e9
-## <<<New Exercise>>>
+## 7. ggplot (VI)
+Lesen Sie die drei Datensätze in R ein und erstellen Sie mit ggplot eine Grafik in der alle Zeitreihen dargestellt werden.
 
 
 *** =instructions
-
+- Stellen Sie die Schlusskurse grafisch dar.
 *** =hint
 
 *** =pre_exercise_code
@@ -320,6 +321,7 @@ test_error()
 
 *** =sample_code
 ```{r}
+
 
 ```
 
@@ -332,3 +334,4 @@ test_error()
 ```{r}
 
 ```
+
