@@ -2,7 +2,7 @@
 title       : Termin 3 (homework) - Testdurchlauf
 description : Kontrollstrukturen und Funktionen in R
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:a89b75f3c5
+--- type:NormalExercise lang:r xp:100 skills:1 key:d7a4a29850
 ## 1. Wuerfelwurf
 In `wurf` ist das Ergebnis eines Würfelwurfes gespeichert. Bei einer Zahl, die echt größer als eins und echt kleiner als fünf ist, gewinnt man. 
 
@@ -42,8 +42,6 @@ test_object("gewonnen")
 test_error()
 
 ```
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:1bc800d9fd
 ## 2. Schleife (I)
 Gegeben ist ein Vektor `v`. Sie sollen mit Hilfe einer Schleife einen Vektor `r` erstellen, der die Elemente von `v` in umgekehrter Reihenfolge enthält. 
