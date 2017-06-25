@@ -105,3 +105,46 @@ test_function("geom_point", args = c("shape"))
 test_error()
 
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:58a2dac0b3
+## 3. Boxplot
+Erstellen sie einen kategorialen Boxplot der Variable "mpg" aus dem Datensatz der Voraufgabe `cars`. 
+
+*** =instructions
+- Erstellen Sie den Boxplot.
+- Unterteilen Sie die Grafik anhand von "am" (automatik/manuell) in zwei Teile.
+- Beschriften Sie die Grafik sinnvoll.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("cars")
+cars <- as.data.frame(cars)
+```
+
+*** =sample_code
+```{r}
+library(ggplot2)
+# Boxplot
+
+
+
+
+```
+
+*** =solution
+```{r}
+ggplot(data = mtcars)+
+  geom_boxplot(mapping = aes(x = am, y= mpg, group = am))+
+  ylab("Miles per Gallon")
+```
+
+*** =sct
+```{r}
+test_function("ggplot", args = c("data"))
+test_function("geom_boxplot", args = c("mapping"))
+test_error()
+
+```
