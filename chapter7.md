@@ -402,3 +402,83 @@ test_output_contains("xoxo")
 test_error()
 
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:6d3abcf16f
+## 8. Funktionen(V) 
+Aus der Übungen kennen Sie bereits eine Funktion geschrieben, die den gleitenden Durchschnitt für ein beliebiges Fenster berechnet. 
+
+Bisher durften Sie davon ausgehen, dass die eingegebene Länge des Fensters eine ungerade natürliche Zahl ist. 
+
+Diese Annahme soll nun aufgehoben werden: Setzen Sie die Fensterlänge für gerade Eingaben innnerhalb der Funktion auf einen um 1 erhöhten Wert.
+
+*** =instructions
+- Schreiben Sie eine Funktion `gleitender_durchschnitt`, die als Argument einen Vektor `zeitreihe` und eine Fensterlänge `x` erwartet.
+- Zuerst soll die Funktion prüfen, ob `x`  gerade oder ungerade ist, und x gegebenenfalls um eins erhöhen.
+- Orientieren Sie sich weitestgehend an der Funktion aus den Vorlesungsunterlagen.
+- Sie gibt am Ende einen Vektor `ergebnis` zurück.
+- Testen Sie ihre Funktion an dem gegebenen Vektor `reihe`.
+
+*** =hint
+- Die Struktur einer Funktion: 
+- `neue_funktion <- function(Eingabeparameter){...working ...return (Ausgabeparameter)}`
+- Berechnen Sie zuerst den Abstand nach links und rechts in der Zeitreihe und speichern Sie diesen in einer neuen Variable in der Funktion.
+- Bedenken Sie, dass z.B. der gleitende 9-er Durchschnitt für die ersten und letzten 4 Zahlen nicht berechnet werden kann.
+
+*** =pre_exercise_code
+```{r}
+reihe <- c(1, 33, 45, 33, 4, 66, 78, 98, 98, 99, 102, 103, 45, 304, 255, 32, 6, 78, 12, 3, 4, 56, 7, 1, 0)
+xyz <- c(1.00000,  33.00000,  45.00000,  37.14286,  51.00000,  60.28571,  68.00000,  77.85714,  92.00000,  89.00000, 121.28571, 143.71429, 134.28571, 121.00000, 117.57143, 104.57143,  98.57143,  55.71429,  27.28571,  23.71429,  23.00000,  11.85714,   7.00000,   1.00000,  0.00000)
+
+
+
+```
+
+*** =sample_code
+```{r}
+# Funktion Berechnung gleitender Durchschnitt
+
+
+
+
+
+
+
+
+# Testen Sie ihre Funktion an reihe mit x = 6 und x = 7
+gleitender_durchschnitt(reihe, 6)
+gleitender_durchschnitt(reihe, 7)
+
+
+```
+
+*** =solution
+```{r}
+# Funktion Berechnung gleitender Durchschnitt
+gleitender_durchschnitt <- function(zeitreihe, x){
+    laenge <- length(zeitreihe)
+    ergebnis <- c()
+    if(x %% 2 == 0){ x <- x + 1 }
+    # Berechnung des Abstandes nach links und rechts
+    n <- (x-1)/2
+    for(i in 1:laenge){
+        # Darf nicht für die ersten n Zahlen berechnet werden
+        if( i <= n | i > (laenge-n)){
+            ergebnis[i] <- zeitreihe[i]
+        }else{
+            ergebnis[i] <- mean( zeitreihe [(i - n) : (i + n)])
+        }
+    }
+    return(ergebnis)
+}
+# Test an reihe mit x = 6 und x = 7
+gleitender_durchschnitt(reihe, 6)
+gleitender_durchschnitt(reihe, 7)
+
+```
+
+*** =sct
+```{r}
+test_function("gleitender_durchschnitt")
+test_output_contains("xyz")
+test_error()
+```
