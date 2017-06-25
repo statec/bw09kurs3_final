@@ -250,3 +250,85 @@ test_function("geom_smooth")
 test_error()
 ```
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:7ebaeb9afb
+## 6. ggplot (V)
+Die folgende Grafik basiert auf dem Datensatz `cars`.
+
+
+*** =instructions
+- Reproduzieren Sie die angezeigte Grafik.
+- um den Fülleffekt zu erhalten benötigen Sie das Argument 'fill' im aes Teil.
+- das geom 'geom_density' eignet sich zur Darstellung einer Dichte.
+- setzen Sie das Argument 'alpha' in 'geom_density' auf 0.4.
+- achten Sie auch auf Beschriftungen und Gruppenunterteilungen.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("mtcars")
+mtcars <- as.data.frame(mtcars)
+ggplot(mtcars, mapping = aes(x = mpg))+
+    geom_density(aes(group = cyl, color = cyl, fill = cyl), alpha = 0.4)+
+    ggtitle("Haeufigkeitsverteilung")+
+    xlab("Miles per gallon")
+
+```
+
+*** =sample_code
+```{r}
+library(ggplot2)
+# Density Plot
+
+
+
+
+```
+
+*** =solution
+```{r}
+# Density Plot
+ggplot(data = mtcars, mapping = aes(x = mpg))+
+    geom_density(aes(group = cyl, color = cyl, fill = cyl), alpha = 0.4)+
+    ggtitle("Haeufigkeitsverteilung")+
+    xlab("Miles per gallon")
+```
+
+*** =sct
+```{r}
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_density", args = c("mapping", "alpha"))
+test_function("ggtitle")
+test_function("xlab")
+test_error()
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:1827cd70e9
+## <<<New Exercise>>>
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
