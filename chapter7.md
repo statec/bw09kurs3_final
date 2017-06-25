@@ -315,29 +315,90 @@ test_error()
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:22d885d3af
-## <<<New Exercise>>>
+## 7. Funktionen(IV) 
+In einer Firma reicht ein Mitarbeiter seine gewünschten Urlaubstage für das Jahr 2017 ein (diese liegen im Vektor `wunsch_urlaub`). Am 20.07.2017 und die Zeit zwischen dem 28. und dem 30. Dezember 2017 besteht eine Urlaubssperre.
 
+Schreiben Sie eine Funktion, welche mögliche Terminkonflikte erkennt.
+
+Info: 
+
+- Gehen Sie einfachheitshalber von folgender Form aus: "JJJJ-MM-TT", also z.B. "2017-04-03" 
 
 *** =instructions
 
+- Vergleichen Sie innerhalb der Funktion jeden Wert des Arguments mit den "verbotenen" Tagen. 
+- Sie kennen dabei die Anzahl der eingereichten Urlaubstage nicht.
+- Die Ausgabe beinhaltet den Vektor mit den Daten, die nicht kollidieren und kennzeichnet Terminkonflikte mit "abgelehnt".
+- die Eingabe c("2017-10-03", "2017-12-29", "2017-12-30") liefer also c("2017-10-03", "abgelehnt", "abgelehnt")
+- Testen Sie die Funktion mit `wunsch_urlaub`.
+
 *** =hint
+- Verwenden Sie eine for-Schleife, welche den Vektor durchläuft und eine if-Abfrage, welche die Bedingung überprüft.
 
 *** =pre_exercise_code
 ```{r}
+# Erstellung der Vektoren
+wunsch_urlaub <- c("2017-10-03", "2017-10-04", "2017-10-05", "2017-10-06", "2017-07-20", "2017-07-21",  "2017-07-22",  "2017-07-23",  "2017-07-24", "2017-12-23", "2017-12-28", "2017-12-29", "2017-12-30")
+
+# Ergebnis 
+xoxo <- c("2017-10-03", "2017-10-04", "2017-10-05", "2017-10-06", "abgelehnt", 
+"2017-07-21", "2017-07-22", "2017-07-23", "2017-07-24", "2017-12-23", 
+"abgelehnt", "abgelehnt", "abgelehnt")
 
 ```
 
 *** =sample_code
 ```{r}
+#  Schreibe Funktion Urlaub
+check_urlaub <- function( wunsch_urlaub ){
+
+
+
+
+
+
+
+
+
+  return(possible)
+}
+
+# Funktion ausführen
+check_urlaub( wunsch_urlaub )
+
 
 ```
 
 *** =solution
 ```{r}
+#  Schreibe Funktion Urlaub
+check_urlaub <- function(daten){
+ # initialisiere output
+  output<- length(daten)
+ # Gehe den ganzen daten Vektor durch
+  for(i in 1:length(daten)){
+ # Bedingung - ist es ein Kollisionstag?
+    if(daten[i] != "2017-07-20" & (daten[i] < "2017-12-28" | daten[i] > "2017-12-30") ){
+    # kein Kollisionstag, also kann Datum in Vektor output geschrieben werden.
+      output[i] <- daten[i]
+      } else {
+      output[i] <- "abgelehnt"
+      }
+    }
+ 
+# output zurückgeben
+  return(output)
+}
+
+# Funktion ausführen
+check_urlaub(wunsch_urlaub)
 
 ```
 
 *** =sct
 ```{r}
+test_function("check_urlaub")
+test_output_contains("xoxo")
+test_error()
 
 ```
