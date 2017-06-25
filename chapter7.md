@@ -482,3 +482,67 @@ test_function("gleitender_durchschnitt")
 test_output_contains("xyz")
 test_error()
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:994a9f6147
+## 9. Funktionen (VI)
+Gegeben ist die folgende Funktion zur Berechnung des Indizes für das Maximum eines Vektors.
+
+*** =instructions
+- Finden Sie den Fehler und korrigieren Sie ihn.
+- Testen Sie selbst, ob ihre Funktion korrekt funktioniert. 
+- Sie können ihre Funktion am Vektor `v` testen.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+v <- c(1:10)
+
+```
+
+*** =sample_code
+```{r}
+find_max_index <- function( vector ){
+laenge <- length(vector)
+max <- vector[1]
+i <- 1
+while( i <= laenge ){
+    if( vector[i] > laenge ){
+        max <- vector[i]
+    }
+    i <- i + 1
+    }
+max_index<- which( vector == max)
+return( max_index )
+}
+
+```
+
+*** =solution
+```{r}
+# Eine mögliche Lösung
+find_max_index <- function( vector ){
+laenge <- length(vector)
+max <- vector[1]
+max_index <- 1
+i <- 1
+# Gehe den ganzen Vektor durch
+while( i <= laenge ){
+    # Wenn ein Wert größer ist, aktualisiere max
+    if( vector[i] > max ){
+        # Setze neues Maximum
+        max <- vector[i]
+        # Setze neuen Ergbebnisindex
+        max_index <- i
+    }
+    i <- i + 1
+    }
+return( max_index )
+}
+
+```
+
+*** =sct
+```{r}
+
+```
