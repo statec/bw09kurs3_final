@@ -1,5 +1,5 @@
 ---
-title       : Termin 3 (homework) - Testdurchlauf
+title       : Termin 3 (homework)
 description : Kontrollstrukturen und Funktionen in R
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:d7a4a29850
