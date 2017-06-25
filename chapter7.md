@@ -217,11 +217,6 @@ test_output_contains("x")
 test_error()
 ```
 
-*** =sct
-```{r}
-
-```
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:2dd5d51085
 ## 5. Funktionen (II)
 Schreiben Sie eine Funktion, welche die Wurzel einer Zahl ausgibt. Wenn die Eingabe negativ ist, soll die Wurzel aus dem Absolutwert der Zahl gezogen werden.
@@ -262,5 +257,87 @@ abswurzel(-4)
 test_function("abswurzel")
 test_output_contains("n")
 test_error()
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:86afeaf738
+## 6. Funktionen (III)
+Schreiben Sie eine Funktion, die für jede Zahl von 1 bis 100 testet, ob sie durch `teiler1` und `teiler2` (Funktionsargumente) teilbar sind. Geben Sie innerhalb der Schleife immer die Zahl selbst aus, wenn sie nicht teilbar ist und "Zahl ist teilbar" wenn die Zahl sowohl durch `teiler1` als auch durch `teiler2` ohne Rest teilbar ist.
+Nutzen Sie für die Ausgabe `print("gewünschter Text")`.
+
+Tipp: 
+
+- Benutzen Sie den Modulo-Operator `%%` um zu überprüfen, ob eine Zahl ohne Rest durch eine andere Zahl teilbar ist. Dieser zeigt den Rest einer ganzzahligen Division an.
+- Bsp: 7 %% 2 = 1 oder 6 %% 2 = 0
+- Die Ausgabe von Text wird durch folgenden Aufbau erreicht: `for(){print("gewünschterText")}`
+
+*** =instructions
+- Schreiben Sie die Funktion `teilbar`, welche zwei Argumente (`teiler1` und `teiler2`) als Eingabe erwartet.
+- Benutzen Sie eine Schleife, um den Test für alle Zahlen zwischen 1 und 100 durchzuführen.
+- Testen Sie in einer if-Abfrage, ob die momentane Zahl sowohl durch `teiler1` als auch durch `teiler2` ganzzahlig teilbar ist.
+- Wenn dies der Fall ist, geben Sie "Zahl ist teilbar" mit print() aus. Sonst soll einfach die Zahl ausgegeben werden.
+- Die Funktion hat keinen Rückgabewert, da Sie ihr Ergebnis direkt in der Konsole ausgibt.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+# Funktion, die ausgibt, welche Zahlen von 1 bis 100 durch zahl1 und zahl2 ganzzahlig teilbar sind
+teilbar <- function(teiler1, teiler2){
+  for(i in 1:100){
+    if(i %% teiler1 == 0 & i %% teiler2 == 0){
+      print("Zahl ist teilbar")} else{
+        print(i)
+      }
+  }
+}
+# Test an 2 und 3
+teilbar(2,3)
+
+```
+
+*** =sct
+```{r}
+test_function("teilbar")
+test_error()
+
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:22d885d3af
+## <<<New Exercise>>>
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
 
 ```
