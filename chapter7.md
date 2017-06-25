@@ -101,28 +101,55 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:bda88050f2
 ## Schleife (II)
+Sie sollen nun mit Hilfe einer Schleife berechnen, wie oft die Zahl fünf eine andere gegebene Zahl `zahl` teilt (es darf ein Rest übrig bleiben). Sie dürfen bei `zahl` von natürlichen Zahlen (0 inklusive) ausgehen.
 
 
 *** =instructions
+- Ziehen Sie innerhalb der Schleife immer 5 von der Zahl ab.
+- Erhöhen Sie anschließend den Zähler `x` um eins.
+- Überlegen Sie, bis wohin die Schleife sinnvollerweise gehen sollte, damit `zahl` niemals negativ wird. 
+- In Zahl soll am Ende der Rest stehen, der aus der ganzzahligen Division übrig geblieben ist.
 
 *** =hint
+- Sei 'zahl' = 13. Die Berechnung von 13 - 5 - 5 liefert einen Rest von 3 und die
+Information, dass 5 'zahl' zweimal teilt.
 
 *** =pre_exercise_code
 ```{r}
-
+# zahl setzen
+zahl <- 63
 ```
 
 *** =sample_code
 ```{r}
+# Zähler auf Null setzen
+x <- 0
+# Schleife 
+
+# Ausgabe von x und zahl
+x
+
 
 ```
 
 *** =solution
 ```{r}
+# Zähler setzen
+x <- 0
+# Schleife
+while(zahl >= 5){
+  zahl <- zahl - 5
+  x <- x + 1
+}
+# Ausgabe
+x
+
 
 ```
 
 *** =sct
 ```{r}
+test_object("x")
+test_error()
 
 ```
