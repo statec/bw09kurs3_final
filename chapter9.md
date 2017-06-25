@@ -199,3 +199,48 @@ test_function("geom_point")
 test_function("geom_smooth", args = c("method"))
 test_error()
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:2a836c5d1d
+## 5. ggplot (IV)
+Erweitern Sie die grafische Darstellung aus der vorherigen Aufgabe (Siehe Plot) um einen nicht linearen Zusammenhang. Orientieren Sie sich dabei am Vorgehen in Termin 4.
+
+*** =instructions
+- der gewählte Ansatz soll Nachbarpunkten bei der Approximation ein hohes Gewicht beimessen
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("cars")
+cars <- as.data.frame(cars)
+# lineare Regression
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg)) +
+    geom_point() + 
+    geom_smooth(method = 'lm')
+```
+
+*** =sample_code
+```{r}
+library(ggplot2)
+# Regressionsplot
+
+```
+
+*** =solution
+```{r}
+# Beispiel für 0.4
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg))+
+  geom_point()+
+  geom_smooth(span = 0.4)
+
+```
+
+*** =sct
+```{r}
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_point")
+test_function("geom_smooth")
+test_error()
+```
+
