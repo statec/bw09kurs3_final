@@ -148,3 +148,54 @@ test_function("geom_boxplot", args = c("mapping"))
 test_error()
 
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:5e13eeefd0
+## 4. ggplot (III)
+Die folgende Grafik basiert auf dem Datensatz cars.
+
+
+Tipp: Folgende Variablen benötigen Sie aus dem Datensatz:
+
+
+- mpg: Miles/(US) gallon
+- wt: Weight (1000 lbs)
+*** =instructions
+Reproduzieren Sie die angezeigte Grafik.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("cars")
+cars <- as.data.frame(cars)
+# lineare Regression
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg)) +
+    geom_point() + 
+    geom_smooth(method = 'lm')
+```
+
+*** =sample_code
+```{r}
+library(ggplot2)
+# lineare Regression
+
+
+```
+
+*** =solution
+```{r}
+# lineare Regression
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg)) +
+    geom_point() + 
+    geom_smooth(method = 'lm')
+
+```
+
+*** =sct
+```{r}
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_point")
+test_function("geom_smooth", args = c("method"))
+test_error()
+```
