@@ -2,26 +2,106 @@
 title       : Einheit 4 (homework) - Noch nicht verfügbar
 description : Grafische Analysen mit ggplot 
 
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:a89b75f3c5
-## test
-test
+--- type:NormalExercise lang:r xp:100 skills:1 key:b369dec2de
+## 1. ggplot (I)
+Die folgende Grafik basiert auf dem Datensatz `cars`.
 
 *** =instructions
-- 1
-- 2
-
+- Reproduzieren Sie die angezeigte Grafik.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+library(ggplot2)
+data("cars")
+cars <- as.data.frame(cars)
+# Plot
+ggplot(data = cars, mapping = aes(x = dist, y = speed))+
+    geom_point(color = "red")+
+    xlab("Distanz")+
+    ylab("Geschwindigkeit")+
+    ggtitle("cars")
+
+```
+
+*** =sample_code
+```{r}
+library(ggplot2)
+# Plot
+
+
+
+    
+```
+
+*** =solution
+```{r}
+# Plot
+ggplot(data = cars, mapping = aes(x = dist, y = speed))+
+    geom_point(color = "red")+
+    xlab("Distanz")+
+    ylab("Geschwindigkeit")+
+    ggtitle("cars")
 
 ```
 
 *** =sct
 ```{r}
-msg_bad <- "Leider falsch!"
-msg_success <- "Richtig!"
-test_mc(correct = 1, feedback_msgs = c(msg_bad, msg_success, msg_bad))
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_point", args = c("color"))
+test_function("xlab")
+test_function("ylab")
+test_function("ggtitle")
+test_error()
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:47a20d3e73
+## ggplot(II)
+Die folgende Grafik basiert auf dem Datensatz `cars`.
+
+Folgende Variablen benötigen Sie aus dem Datensatz:
+- mpg: Miles/(US) gallon
+- wt: Weight (1000 lbs)
+- qsec: 1/4 mile time
+
+*** =instructions
+- Reproduzieren Sie die angezeigte Grafik.
+- Die Variation im Aussehen der Datenpunkte soll sich anhand der Geschwindigkeit auf eine viertel Meile unterscheiden. Gehen Sie auf die Suche nach dem passenden
+Argument im 'aes ()' Teil.
+- die Darstellung der Punktform kontrollieren Sie über das Argument 'shape'.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("cars")
+cars <- as.data.frame(cars)
+
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg, size = qsec))+
+  geom_point(shape = 15)
+
+```
+
+*** =sample_code
+```{r}
+library(ggplot2)
+# Plot
+
+
+```
+
+*** =solution
+```{r}
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg, size = qsec))+
+  geom_point(shape = 15)
+
+```
+
+*** =sct
+```{r}
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_point", args = c("shape"))
+test_error()
 
 ```
