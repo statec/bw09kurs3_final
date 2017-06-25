@@ -205,6 +205,12 @@ test_error()
 ## 5. ggplot (IV)
 Erweitern Sie die grafische Darstellung aus der vorherigen Aufgabe (Siehe Plot) um einen nicht linearen Zusammenhang. Orientieren Sie sich dabei am Vorgehen in Termin 4.
 
+Folgende Variablen benötigen Sie aus dem Datensatz:
+
+
+- mpg: Miles/(US) gallon
+- wt: Weight (1000 lbs)
+
 *** =instructions
 - der gewählte Ansatz soll Nachbarpunkten bei der Approximation ein hohes Gewicht beimessen
 *** =hint
