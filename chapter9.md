@@ -310,8 +310,10 @@ test_error()
 Lesen Sie die drei Datensätze in R ein und erstellen Sie mit ggplot eine Grafik in der alle Zeitreihen dargestellt werden.
 
 
+Tipp: Sie benötigen Funktionen, die in Termin 2 besprochen wurden.
 *** =instructions
 - Stellen Sie die Schlusskurse grafisch dar.
+- Verwenden Sie nur Zeitpunkte, die in allen drei Zeitreihen vorhanden sind.
 *** =hint
 
 *** =pre_exercise_code
@@ -321,6 +323,23 @@ Lesen Sie die drei Datensätze in R ein und erstellen Sie mit ggplot eine Grafik
 
 *** =sample_code
 ```{r}
+apple <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/apple.csv")
+fb <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/fb_aktie.csv")
+db <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/db_aktie.csv")
+
+library(dplyr)
+apple <- select(apple, appleClose = Close, Date = Date)
+fb <- select(fb, fbClose = Close, Date = Date)
+db <- select(db, dbClose = Close, Date = Date)
+
+dataset <- inner_join(apple, fb, by = "Date")
+dataset <- inner_join(dataset, db, by = "Date")
+library(ggplot2)
+ggplot(data = dataset, mapping = aes(x = Date, y = appleClose))+
+  geom_line(mapping = aes(x = Date, y = fbClose))+
+  geom_line(mapping = aes(x = Date, y = dbClose))
+  
+  
 
 
 ```
