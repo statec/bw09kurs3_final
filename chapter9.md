@@ -1,5 +1,5 @@
 --- 
-title       : Einheit 4 (homework
+title       : Einheit 4 (homework)
 description : Grafische Analysen mit ggplot 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b369dec2de
