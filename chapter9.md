@@ -1,5 +1,5 @@
 --- 
-title       : Einheit 4 (homework) - Noch nicht verfügbar
+title       : Einheit 4 (homework
 description : Grafische Analysen mit ggplot 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b369dec2de
@@ -428,11 +428,24 @@ ggplot(data = daten)+
 
 *** =solution
 ```{r}
+library(ggplot2)
+daten <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/exxon.csv")
+daten$Date <- as.Date(daten$Date)
 
+ggplot(data = daten)+
+    geom_line(mapping = aes(x = Date, y = Close))+
+    xlab("Datum")+
+    ylab("Schlusskurs")+
+    ggtitle("Kursentwicklung der Exxon Aktie")
 
 ```
 
 *** =sct
 ```{r}
-
+test_function("ggplot")
+test_function("geom_line")
+test_function("xlab")
+test_function("ylab")
+test_function("ggtitle")
+test_error()
 ```
