@@ -307,21 +307,17 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1827cd70e9
 ## 7. ggplot (VI)
-Lesen Sie die drei Datensätze in R ein und erstellen Sie mit ggplot eine Grafik in der alle Zeitreihen dargestellt werden.
+Lesen Sie die drei Datensätze in R ein und erstellen Sie mit ggplot eine Grafik in der alle Zeitreihen dargestellt werden, wie auf dem dargestellten Plot.
 
 
 Tipp: Sie benötigen Funktionen, die in Termin 2 besprochen wurden.
 *** =instructions
 - Stellen Sie die Schlusskurse grafisch dar.
 - Verwenden Sie nur Zeitpunkte, die in allen drei Zeitreihen vorhanden sind.
+- Überprüfen Sie selbst, ob ihre Grafik korrekt ist.
 *** =hint
-
+-Denken Sie daran, das Datum mit `as.Date` auf den richtigen Typ zu bringen.
 *** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
 ```{r}
 apple <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/apple.csv")
 fb <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/fb_aktie.csv")
@@ -334,10 +330,33 @@ db <- select(db, dbClose = Close, Date = Date)
 
 dataset <- inner_join(apple, fb, by = "Date")
 dataset <- inner_join(dataset, db, by = "Date")
+dataset$Date <- as.Date(dataset$Date)
+  
 library(ggplot2)
-ggplot(data = dataset, mapping = aes(x = Date, y = appleClose))+
-  geom_line(mapping = aes(x = Date, y = fbClose))+
+
+ggplot(data = dataset)+
+  geom_line(mapping = aes(x = Date, y = appleClose), color = "blue")+
+  geom_line(mapping = aes(x = Date, y = fbClose), color = "red")+
   geom_line(mapping = aes(x = Date, y = dbClose))
+rm(apple)
+rm(fb)
+rm(db)
+rm(dataset)
+```
+
+*** =sample_code
+```{r}
+apple <- ___
+fb <- ___
+db <- ___
+
+library(dplyr)
+
+
+
+  
+library(ggplot2)
+
   
   
 
@@ -346,11 +365,30 @@ ggplot(data = dataset, mapping = aes(x = Date, y = appleClose))+
 
 *** =solution
 ```{r}
+apple <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/apple.csv")
+fb <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/fb_aktie.csv")
+db <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/db_aktie.csv")
 
+library(dplyr)
+apple <- select(apple, appleClose = Close, Date = Date)
+fb <- select(fb, fbClose = Close, Date = Date)
+db <- select(db, dbClose = Close, Date = Date)
+
+dataset <- inner_join(apple, fb, by = "Date")
+dataset <- inner_join(dataset, db, by = "Date")
+dataset$Date <- as.Date(dataset$Date)
+  
+library(ggplot2)
+
+ggplot(data = dataset)+
+  geom_line(mapping = aes(x = Date, y = appleClose), color = "blue")+
+  geom_line(mapping = aes(x = Date, y = fbClose), color = "red")+
+  geom_line(mapping = aes(x = Date, y = dbClose))
 ```
 
 *** =sct
 ```{r}
-
+test_error()
 ```
+
 
