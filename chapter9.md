@@ -346,8 +346,11 @@ rm(dataset)
 
 *** =sample_code
 ```{r}
+# Apple Daten in http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/apple.csv
 apple <- ___
+# Facebook Daten in http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/fb_aktie.csv
 fb <- ___
+# Deutsche Bank Daten in http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/db_aktie.csv
 db <- ___
 
 library(dplyr)
@@ -392,3 +395,44 @@ test_error()
 ```
 
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:bec1d15e21
+## 8. ggplot (VII)
+Rechts wird Ihnen eine Grafik angezeigt.
+
+*** =instructions
+- Replizieren Sie die angezeigte Grafik.
+- Überprüfen Sie selbst, ob ihre Lösung mit der angezeigten Grafik übereinstimmt.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+daten <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/exxon.csv")
+daten$Date <- as.Date(daten$Date)
+
+ggplot(data = daten)+
+    geom_line(mapping = aes(x = Date, y = Close))+
+    xlab("Datum")+
+    ylab("Schlusskurs")+
+    ggtitle("Kursentwicklung der Exxon Aktie")
+    
+```
+
+*** =sample_code
+```{r}
+# Daten in http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/exxon.csv
+
+    
+```
+
+*** =solution
+```{r}
+
+
+```
+
+*** =sct
+```{r}
+
+```
