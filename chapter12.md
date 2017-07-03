@@ -318,7 +318,7 @@ datensatz2 <- data.frame(werte, gruppenname)
 ```{r}
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig!"
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 ```
 
 
