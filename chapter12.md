@@ -52,7 +52,8 @@ summary(res)
 
 *** =sct
 ```{r}
-test_function("aov")
+test_function("aov", args = c("data"))
+test_object("res")
 test_error()
 success_msg("Sehr gut!")
 ```
