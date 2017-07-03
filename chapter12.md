@@ -232,18 +232,10 @@ summary(aov(werte ~ gruppenname, data = datensatz))
 ```{r}
 test_object("nenner")
 test_object("F_wert")
-test_function("aov")
+test_function("aov", args = c("data"))
 test_error()
 success_msg("Sehr gut!")
 ```
-
-
-
-
-
-
-
-
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:4ce94c7b53
 ## ANOVA(IV)
@@ -282,13 +274,8 @@ datensatz2 <- data.frame(werte, gruppenname)
 ```{r}
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig!"
-test_mc(correct = 1, feedback_msgs = c(msg_bad, msg_success, msg_bad))
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 ```
-
-
-
-
-
 
 
 
