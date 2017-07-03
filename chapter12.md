@@ -34,7 +34,7 @@ datensatz <- data.frame(werte, gruppenname)
 *** =sample_code
 ```{r}
 # ANOVA Analyse
-res <- 
+res <- _____
 
 # Summary
 summary(res)
@@ -54,6 +54,7 @@ summary(res)
 ```{r}
 test_function("aov")
 test_error()
+success_msg("Sehr gut!")
 ```
 
 
@@ -125,6 +126,7 @@ zaehler <- 1/(l-1) * (  n_i* ( m_g1 - m_all )^2 +
 ```{r}
 test_object("zaehler")
 test_error()
+success_msg("Sehr gut!")
 ```
 
 
@@ -231,6 +233,7 @@ test_object("nenner")
 test_object("F_wert")
 test_function("aov")
 test_error()
+success_msg("Sehr gut!")
 ```
 
 
@@ -396,6 +399,7 @@ test_object("linreg")
 test_function("curve")
 test_function("plot")
 test_error()
+success_msg("Sehr gut!")
 ```
 
 
@@ -445,5 +449,6 @@ summary(reg2)
 ```{r}
 test_object("reg2")
 test_error()
+success_msg("Sehr gut!")
 ```
 
