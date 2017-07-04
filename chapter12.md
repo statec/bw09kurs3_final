@@ -116,10 +116,10 @@ library( dplyr )
 l <- 4
 
 # Extrahiere Gruppen
-gruppe_1 <- filter( datensatz , gruppenname == "g1" )
-gruppe_2 <- filter( datensatz , gruppenname == "g2" )
-gruppe_3 <- filter( datensatz , gruppenname == "g3" )
-gruppe_4 <- filter( datensatz , gruppenname == "g4" )
+gruppe_1 <- datensatz %>% filter( gruppenname == "g1" ) %>% select( werte )
+gruppe_2 <- datensatz %>% filter( gruppenname == "g2" ) %>% select( werte )
+gruppe_3 <- datensatz %>% filter( gruppenname == "g3" ) %>% select( werte )
+gruppe_4 <- datensatz %>% filter( gruppenname == "g4" ) %>% select( werte )
 # Liste der Gruppen
 
 
