@@ -67,7 +67,7 @@ Wenden Sie nun die Formel zur Berechnung der Teststatistik an. Berechnen Sie zun
 Die Daten liegen in `datensatz`.
 
 
-Tipp: Die Daten sind in 4 Gruppen aufgeteilt, welche in `gruppe_i` für 1<=i<=4 enthalten sind.
+Tipp: Die Daten sind in 4 Gruppen aufgeteilt.
 
 *** =instructions
 - Berechnen Sie die Abweichung im Gruppenmittelwert.
@@ -87,15 +87,20 @@ gruppe_4 <- rnorm(n, mean = 3, sd = 5)
 werte <- c(gruppe_1, gruppe_2, gruppe_3, gruppe_4)
 gruppenname <- c(rep("g1", n), rep("g2", n), rep("g3",n), rep("g4",n))
 datensatz <- data.frame(werte, gruppenname)
+rm(gruppe_1,gruppe_2,gruppe_3,gruppe_4,werte,gruppenname)
+
 
 
 ```
 
 *** =sample_code
 ```{r}
+library( dplyr )
 
-
-
+gruppe_1 <- 
+gruppe_2 <- 
+gruppe_3 <-  
+gruppe_4 <- 
 
 
 
@@ -106,10 +111,22 @@ zaehler <- ___
 
 *** =solution
 ```{r}
+library( dplyr )
 # Anzahl der Gruppen
 l <- 4
+
+# Extrahiere Gruppen
+gruppe_1 <- filter( datensatz , gruppenname == "g1" )
+gruppe_2 <- filter( datensatz , gruppenname == "g2" )
+gruppe_3 <- filter( datensatz , gruppenname == "g3" )
+gruppe_4 <- filter( datensatz , gruppenname == "g4" )
+# Liste der Gruppen
+
+
 # Anzahl der Beobachtungen pro Gruppe
 n_i <- 100
+
+
 # means berechnen
 m_g1 <- mean(gruppe_1)
 m_g2 <- mean(gruppe_2)
