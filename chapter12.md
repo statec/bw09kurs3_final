@@ -260,7 +260,7 @@ success_msg("Sehr gut!")
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:4ce94c7b53
 ## ANOVA(IV)
 
-Untersuchen Sie nun die Daten in `datensatz2` (eingelesen). 
+Untersuchen Sie nun die 4 Gruppen in `datensatz2` (eingelesen). 
 
 Die Gültigkeit der F-Verteilung gilt nur für normalverteilte Variablen mit gleicher Varianz innerhalb der Gruppen.
 
@@ -304,7 +304,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:92a85b0c7c
 ## ANOVA(V)
-Untersuchen Sie nun die Daten in `datensatz2` (eingelesen). 
+Untersuchen Sie nun die 4 Gruppen in `datensatz2` (eingelesen). 
 
 Die Gültigkeit der F-Verteilung gilt nur für normalverteilte Variablen mit gleicher Varianz innerhalb der Gruppen.
 
