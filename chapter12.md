@@ -260,13 +260,14 @@ success_msg("Sehr gut!")
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:4ce94c7b53
 ## ANOVA(IV)
 
+Untersuchen Sie nun die Daten in `datensatz2` (eingelesen). 
+
 Die Gültigkeit der F-Verteilung gilt nur für normalverteilte Variablen mit gleicher Varianz innerhalb der Gruppen.
 
 Überprüfen Sie mittels grafischer Analyse die Annahme der Normalverteilung. 
 
 Extrahieren Sie dazu die Werte einer bestimmten Gruppe (z.B. in `gruppe_xy`) und verwenden Sie `hist( gruppe_xy )` oder `plot( density( gruppe_xy ) )`.
 
-Ein Beispiel `datensatz2` ist bereits eingelesen.
 *** =instructions
 
 - Die Normalverteilungsannahme trifft zu.
@@ -303,14 +304,14 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:92a85b0c7c
 ## ANOVA(V)
+Untersuchen Sie nun die Daten in `datensatz2` (eingelesen). 
 
 Die Gültigkeit der F-Verteilung gilt nur für normalverteilte Variablen mit gleicher Varianz innerhalb der Gruppen.
 
 Überprüfen Sie mittels grafischer Analyse die Annahme identischer Varianzen. 
 
 Extrahieren Sie dazu die Werte einer bestimmten Gruppe (z.B. in `gruppe_xy`) und verwenden Sie `hist( gruppe_xy )` oder `plot( density( gruppe_xy ) )`.
-
-Ein Beispiel `datensatz2` ist bereits eingelesen.
+ 
 *** =instructions
 
 - Es liegt Varianzhomogenität vor.
