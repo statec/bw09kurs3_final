@@ -277,7 +277,7 @@ Extrahieren Sie dazu die Werte einer bestimmten Gruppe (z.B. in `gruppe_xy`) und
 
 *** =pre_exercise_code
 ```{r}
-n <- 100
+n <- 10000
 set.seed(2)
 # Erstellt Zufallszahlen
 gruppe_1 <- rnorm(n, mean = 0, sd = 5)
@@ -321,7 +321,7 @@ Extrahieren Sie dazu die Werte einer bestimmten Gruppe (z.B. in `gruppe_xy`) und
 
 *** =pre_exercise_code
 ```{r}
-n <- 100
+n <- 10000
 set.seed(2)
 # Erstellt Zufallszahlen
 gruppe_1 <- rnorm(n, mean = 0, sd = 5)
