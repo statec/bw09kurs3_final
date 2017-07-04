@@ -155,7 +155,7 @@ Berechnen Sie als nächstes den Nenner der Teststatistik (berücksichtigt die Va
 
 Die Daten liegen in `datensatz`. Das Ergebnis der vorherigen Aufgabe steht in `zaehler`.
 
-Tipp: Um die Summen über die korrekten vektoren zu bilden, müssen Sie den Datensatz erst anhand der Gruppen aufteilen. 
+
 
 *** =instructions
 - Berechnen Sie die Varianz innerhalb der Gruppen.
@@ -199,7 +199,10 @@ zaehler <- 1/(l-1) * (  n_i* ( m_g1 - m_all )^2 +
 ```{r}
 library(dplyr)
 
-
+gruppe_1 <- datensatz %>% filter( gruppenname == "g1" )
+gruppe_2 <- datensatz %>% filter( gruppenname == "g2" )
+gruppe_3 <- datensatz %>% filter( gruppenname == "g3" ) 
+gruppe_4 <- datensatz %>% filter( gruppenname == "g4" ) 
 
 
 
