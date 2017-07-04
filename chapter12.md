@@ -116,10 +116,10 @@ library( dplyr )
 l <- 4
 
 # Extrahiere Gruppen
-gruppe_1 <- datensatz %>% filter( gruppenname == "g1" ) %>% select( werte )
-gruppe_2 <- datensatz %>% filter( gruppenname == "g2" ) %>% select( werte )
-gruppe_3 <- datensatz %>% filter( gruppenname == "g3" ) %>% select( werte )
-gruppe_4 <- datensatz %>% filter( gruppenname == "g4" ) %>% select( werte )
+gruppe_1 <- datensatz %>% filter( gruppenname == "g1" )
+gruppe_2 <- datensatz %>% filter( gruppenname == "g2" )
+gruppe_3 <- datensatz %>% filter( gruppenname == "g3" ) 
+gruppe_4 <- datensatz %>% filter( gruppenname == "g4" ) 
 # Liste der Gruppen
 
 
@@ -128,11 +128,11 @@ n_i <- 100
 
 
 # means berechnen
-m_g1 <- mean(gruppe_1)
-m_g2 <- mean(gruppe_2)
-m_g3 <- mean(gruppe_3)
-m_g4 <- mean(gruppe_4)
-m_all <- mean(c(gruppe_1, gruppe_2, gruppe_3, gruppe_4))
+m_g1 <- mean(gruppe_1$werte)
+m_g2 <- mean(gruppe_2$werte)
+m_g3 <- mean(gruppe_3$werte)
+m_g4 <- mean(gruppe_4$werte)
+m_all <- mean(c(gruppe_1$werte, gruppe_2$werte, gruppe_3$werte, gruppe_4$werte))
 # Abweichung im Gruppenmittelwert
 zaehler <- 1/(l-1) * (  n_i* ( m_g1 - m_all )^2 +
                         n_i* ( m_g2 - m_all )^2 +
