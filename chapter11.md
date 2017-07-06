@@ -163,3 +163,45 @@ pchisq( y, df = 8 )- pchisq( 6, df = 8) # läuft!
 test_object("y")
 test_error()
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:95f2f25dca
+## Hypothesentest (I)
+Für die Mitarbeiter eines Geschäftsbereichs ist ein Gehaltsbudget von 2000 Euro veranschlagt, wobei Abweichungen von dieser Obergrenze in Einzelfällen zulässig sind.
+
+Eine Stichprobe unter 500 Mitarbeitern weist ein Durchschnittsgehalt von 2040 Euro aus. Die Standardabweichung des Gehalts beträgt 120 Euro .
+
+Testen Sie auf einem 5% Signifikanzniveau, ob das Budget zu knapp bemessen ist.
+
+*** =instructions
+- Führen Sie einen vollständigen Hypothesentest durch (inkl. Nullhypothese, Teststatistik und Testentscheidung). 
+- Rechnen Sie mit exakten Werten.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# H_0: ___
+teststat <- ___
+
+# Testentscheidung: ___
+```
+
+*** =solution
+```{r}
+# H_0 : mu<2000
+teststat <-  (2040-2000)/ (120/sqrt(500))
+pnorm(-abs(teststat)) 
+# Testentscheidung: verwerfe
+```
+
+*** =sct
+```{r}
+test_object("teststat")
+test_function("pnorm")
+test_error()
+```
