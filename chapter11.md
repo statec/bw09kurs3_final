@@ -301,10 +301,12 @@ test_error()
 --- type:NormalExercise lang:r xp:100 skills:1 key:6e691cab67
 ## Wiederholung Funktionen
 Erstellen Sie eine Funktion, die Ihnen in Abhängigkeit einer übergebenen Verteilung (inkl. eventueller Parameter) die Quantile der Verteilung liefert.
+
 Die Funktion soll mit drei Verteilungen umgehen können: 
-    - Normalverteilung (mit Paramtern: mean, sd)
-    - Chiquadrat Vereteilung (mit Parametern: df)
-    - F Verteilung (mit Paramtern: df1 , df2 )
+
+- Normalverteilung (mit Paramtern: mean, sd)
+- Chiquadrat Vereteilung (mit Parametern: df)
+- F Verteilung (mit Paramtern: df1 , df2 )
   
 Dokumentieren Sie Ihre Funktion.
 
@@ -320,7 +322,7 @@ Dokumentieren Sie Ihre Funktion.
 
 *** =sample_code
 ```{r}
-
+testfunc <- ___
 
 
 # Test Chiquadrat
