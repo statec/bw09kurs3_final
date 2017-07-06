@@ -241,3 +241,128 @@ test_object("ergebnis")
 test_function("qbinom", args = c("p", "size", "prob"))
 test_error()
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b01dd2d16f
+## Wiederholung Grafiken
+Die folgende Grafik stellt die Wahrscheinlichkeit Pr( X > 1 ) einer standardnormalverteilten Zufallsvariable dar. 
+
+
+Hinweis: Sie müssen die Grafik nicht exakt nachbilden. Ihre Lösung muss jedoch den gekennzeichneten Bereich der Wahrscheinlichkeitsmasse enthalten. 
+Sie müssen außerdem nicht ggplot verwenden. (Es gibt hier keinen automatisierten Test)
+
+*** =instructions
+- Replizieren Sie die Grafik. 
+- Überprüfen Sie ihre Lösung eigenständig.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+library(tidyr)
+library(ggplot2)
+funcShaded <- function(x) {
+  y <- dnorm(x)
+  y[x < 1] <- NA
+  return(y)
+}
+
+
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm)+
+  stat_function(fun = funcShaded, geom="area", fill="blue", alpha=0.2)
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+library(tidyr)
+library(ggplot2)
+funcShaded <- function(x) {
+  y <- dnorm(x)
+  y[x < 1] <- NA
+  return(y)
+}
+
+
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm)+
+  stat_function(fun = funcShaded, geom="area", fill="blue", alpha=0.2)
+```
+
+*** =sct
+```{r}
+test_error()
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:6e691cab67
+## Wiederholung Funktionen
+Erstellen Sie eine Funktion, die Ihnen in Abhängigkeit einer übergebenen Verteilung (inkl. eventueller Parameter) die Quantile der Verteilung liefert.
+Die Funktion soll mit drei Verteilungen umgehen können: 
+    - Normalverteilung (mit Paramtern: mean, sd)
+    - Chiquadrat Vereteilung (mit Parametern: df)
+    - F Verteilung (mit Paramtern: df1 , df2 )
+  
+Dokumentieren Sie Ihre Funktion.
+
+*** =instructions
+- Erstellen Sie `testfunc()` nach den bereits genannten Bedingungen.
+- Testen Sie die bereits vorgegebenen Beispiele.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+
+
+# Test Chiquadrat
+chi <- testfunc( typ = "chiquadrat", p = 0.6 , df1 = 3 ) 
+
+# Test Normal
+n <- testfunc( typ = "normal" , p = 0.6 ,  mean = 3 , sd = 5) 
+
+# Test F-Verteilung
+f <- testfunc( typ = "f", p = 0.6 , df1 = 3, df2=5 ) 
+
+```
+
+*** =solution
+```{r}
+ testfunc <- function( typ , p,  mean, sd, df1, df2 ){
+    if( typ == "normal" ){
+      out <- qnorm( p , mean = mean, sd = sd)        
+    }
+    if( typ == "chiquadrat" ){
+      out <- qchisq( p , df = df1 )       
+    }
+    if( typ == "f" ){
+      out <- qf( p , df1 = df1, df2 = df2)        
+    }
+  return( out )
+  }
+# Test Chiquadrat
+chi <- testfunc( typ = "chiquadrat", p = 0.6 , df1 = 3 ) 
+
+# Test Normal
+n <- testfunc( typ = "normal" , p = 0.6 ,  mean = 3 , sd = 5) 
+
+# Test F-Verteilung
+f <- testfunc( typ = "f", p = 0.6 , df1 = 3, df2=5 ) 
+```
+
+*** =sct
+```{r}
+test_function("testfunc")
+test_object("chi")
+test_object("n")
+test_object("f")
+test_error()
+```
