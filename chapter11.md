@@ -205,3 +205,39 @@ test_object("teststat")
 test_function("pnorm")
 test_error()
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:80da065f16
+## Hypothesentest (II)
+Die Annahmeprüfung für eine Produktion von Sicherungen wird auf Stichprobenbasis durchgeführt. 
+Der Hersteller behauptet, der Anteil der nicht funktionsfähigen Sicherungen beträgt höchstens 5%. 
+Es wird eine Stichprobe von 500 Stück geprüft.
+  
+Wie viele Lampen müssen funktionstüchtig sein, um auf einem Signifikanzniveau von 7% anzunehmen, dass die Hypothese des Herstellers korrekt ist?
+
+*** =instructions
+- Wie viele Lampen müssen funktionstüchtig sein, um auf einem Signifikanzniveau von 7% anzunehmen, dass die Hypothese des Herstellers korrekt ist?
+- Speichern Sie die Lösung in `ergebnis`
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+ergebnis <- ___
+```
+
+*** =solution
+```{r}
+# Berechnung durch inverse Verteilungsfunktion... 7% im linken rand der Verteilung
+ergebnis <- qbinom(p =0.07 , size = 500, prob = 0.95 )
+```
+
+*** =sct
+```{r}
+test_object("ergebnis")
+test_function("qbinom", args = c("p", "size", "prob"))
+test_error()
+```
