@@ -199,12 +199,18 @@ zaehler <- 1/(l-1) * (  n_i* ( m_g1 - m_all )^2 +
 ```{r}
 library(dplyr)
 
+# Gruppen:
 gruppe_1 <- datensatz %>% filter( gruppenname == "g1" )
 gruppe_2 <- datensatz %>% filter( gruppenname == "g2" )
 gruppe_3 <- datensatz %>% filter( gruppenname == "g3" ) 
 gruppe_4 <- datensatz %>% filter( gruppenname == "g4" ) 
 
-
+# Mittelwerte:
+m_g1 <- mean(gruppe_1$werte)
+m_g2 <- mean(gruppe_2$werte)
+m_g3 <- mean(gruppe_3$werte)
+m_g4 <- mean(gruppe_4$werte)
+m_all <- mean(c(gruppe_1$werte, gruppe_2$werte, gruppe_3$werte, gruppe_4$werte))
 
 
 
@@ -354,7 +360,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:9a4690dabe
 ## Lineare Regression
-Berechnen Sie mittels `lm()` den Zusammenhang zwischen den Eröffnungskursen von Google und Apple. Diese liegen in `daten_google` und `daten_apple`.
+Berechnen Sie mittels `lm()` den Zusammenhang zwischen den Eröffnungskursen von Google und Apple. Diese liegen in `open_google` und `open_apple`.
 
 Tipp: Sie können per `coefficients( linreg )[i]` auf den i-ten Koeffizienten zugreifen.
 
