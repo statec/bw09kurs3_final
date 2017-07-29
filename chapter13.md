@@ -243,3 +243,45 @@ pt( - 1.809, df = 4 ) *2
 ```{r}
 
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:e59a1e4cfe
+## Nicht lineare Modelle 
+Der bereitgestellte Datensatz `butter` enthält Angaben zur Kaufentscheidung und Eigenschaften von Buttersorten. 
+
+*** =instructions
+- Untersuchen Sie den Zusammenhang zwischen der Kaufentscheidung und der Haltbarkeit.
+- Führen Sie eine nicht lineare Schätzung mit dem logistischen Regressionsmodell durch. 
+- Interpretieren Sie ihr Ergebnis statistisch.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+haltbk <- c(3,4,5,4,2,7,5,4,6,6,3,5,4,3,5,3,4,2,2,5,7,3,4,6)
+kauf <- c(1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0)
+butter <- data.frame(haltbk, kauf)
+```
+
+*** =sample_code
+```{r}
+# Schätzung des Modells
+logit <- ___
+
+
+```
+
+*** =solution
+```{r}
+# Schätzung des Modells
+logit <- glm(butter$kauf ~ butter$haltbk, 
+             family = binomial(link = "logit"))
+summary(logit)
+```
+
+*** =sct
+```{r}
+test_object("logit")
+test_function("glm", args = c("family"))
+test_error()
+```
