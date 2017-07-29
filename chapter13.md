@@ -306,6 +306,22 @@ Untersuchen Sie die Auswirkungen einer Verletzung der Homogenitätsannahme in de
 
 *** =sample_code
 ```{r}
+# Erstelle Funktion
+anova_check2 <- function(___){
+
+
+
+
+
+}
+
+# Erstelle Teststatistik mit 10000 Stichproben unter H0, n = 5
+test_stats <- ___
+
+```
+
+*** =solution
+```{r}
 anova_check2 <- function( n ){
     g1 <- rnorm( n ,sd = 1  )
     g2 <- rnorm( n , sd = 10)
@@ -333,12 +349,9 @@ curve( df( x, df1 = 2, df2 = 3*5 - 3), from = -1 ,to = 30 , n = 10000,
 legend("topright", c("test_stats", "vorhergesagte Verteilung"), col = c("black", "red"), lty= c(1,1))
 ```
 
-*** =solution
-```{r}
-
-```
-
 *** =sct
 ```{r}
-
+test_function("anova_check2")
+test_object("test_stats")
+test_error()
 ```
