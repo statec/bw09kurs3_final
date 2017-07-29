@@ -127,3 +127,64 @@ ergebnis <- zaehler/ nenner
 test_object("ergebnis")
 test_error()
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:ed7afe50dd
+## Lineare Regression
+Berechnen Sie mittels lm() einen linearen Trend des Schlusskurses der Apple Aktie (apple.csv).
+    
+Der Regressionsoutput sollte also die Parameter der folgenden Regressionsgrade enthalten:
+
+*** =instructions
+- Berechnen Sie die lineare Regression und speichern Sie diese in `reg`
+- Stellen Sie die Grafik nach und überprüfen Sie diese.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+ap<- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/apple.csv")
+ap$Date<- as.Date(ap$Date)
+ap$newvar<- length(ap$Date):1
+reg <- lm( Close ~ newvar , data=ap)
+    
+plot( ap$newvar , ap$Close, type = "l" , lwd= 3, xlab="Datum", ylab="Close" , xaxt='n')
+curve( coefficients(reg)[1] + coefficients(reg)[2]*x , add=TRUE , col="red", lty= 2 , lwd= 2)
+
+```
+
+*** =sample_code
+```{r}
+# Einlesen des Datensatzes, Link: http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/apple.csv
+apple<- ___
+
+
+# Speichern Sie die lineare Regressionsgerade vorerst in reg
+reg <- lm(___)
+
+
+# Plot
+
+
+```
+
+*** =solution
+```{r}
+# Einlesen des Datensatzes
+apple<- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3874/datasets/apple.csv")
+# Datum als Typ Date 
+apple$Date<- as.Date(apple$Date)
+apple$newvar<- length(apple$Date):1
+# Speichern Sie die lineare Regressionsgerade vorerst in reg
+reg <- lm(Close ~ newvar, data=apple)
+# Uebersicht
+summary(reg)
+# Plot
+plot(apple$newvar, apple$Close, type = "l", lwd= 3, xlab="Datum", ylab="Close" , xaxt='n')
+curve(coefficients(reg)[1] + coefficients(reg)[2]*x , add=TRUE , col="red", lty= 2 , lwd= 2)
+
+```
+
+*** =sct
+```{r}
+test_object("reg")
+test_error()
+```
