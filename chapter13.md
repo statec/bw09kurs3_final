@@ -78,7 +78,7 @@ library(tidyr)
 
 
 
-
+# Ergebnisberechnung
 ergebnis <- ___
 
 ```
