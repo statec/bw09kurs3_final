@@ -269,6 +269,7 @@ butter <- data.frame(haltbk, kauf)
 logit <- ___
 
 
+summary(logit)
 ```
 
 *** =solution
@@ -284,4 +285,60 @@ summary(logit)
 test_object("logit")
 test_function("glm", args = c("family"))
 test_error()
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:246751e1e7
+## Anova (III) 
+Untersuchen Sie die Auswirkungen einer Verletzung der Homogenitätsannahme in der Anova Analyse auf die Verteilung der Teststatistik.
+
+*** =instructions
+- Orientieren Sie sich bei der Untersuchung an den Veranstaltungsunterlagen.
+- Gehen Sie von drei Gruppen aus, die jeweils aus einer Normalverteilung generiert werden.
+- Wählen Sie in diesen Gruppen unterschiedliche Standardabweichungen ( z.B. 1, 10 und 1000). 
+- Erstellen Sie einen Plot, der die Teststatistik und die vorhergesagte Verteilung vergleicht.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+anova_check2 <- function( n ){
+    g1 <- rnorm( n ,sd = 1  )
+    g2 <- rnorm( n , sd = 10)
+    g3 <- rnorm( n ,sd =  1000)
+    m_g1 <- mean( g1 )
+    m_g2 <- mean( g2 )
+    m_g3 <- mean( g3 )
+    m_all <- mean( c( g1, g2, g3 ) )
+    zaehler <- 1/2 * ( n* ( m_g1 - m_all )^2 +
+                       n* ( m_g2 - m_all )^2 +
+                       n* ( m_g3 - m_all )^2 )
+    nenner <- 1/( 3*n-3 ) * ( sum( ( g1 - m_g1 )^2 ) +
+                              sum( ( g2 - m_g2 )^2 ) +
+                              sum( ( g3 - m_g3 )^2 ) )
+    teststat <- zaehler / nenner
+    return( teststat ) }
+    
+test_stats <- c()
+    for( i in 1:10000){ # 10000 Stichproben unter H0
+      test_stats[i] <- anova_check2( n = 5 )
+    }
+plot(density( test_stats ) , xlim=c(0,20))
+curve( df( x, df1 = 2, df2 = 3*5 - 3), from = -1 ,to = 30 , n = 10000,
+           col = "red" , lwd = 2 , add = TRUE )
+legend("topright", c("test_stats", "vorhergesagte Verteilung"), col = c("black", "red"), lty= c(1,1))
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
 ```
