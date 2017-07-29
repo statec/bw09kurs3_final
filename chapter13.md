@@ -188,3 +188,58 @@ curve(coefficients(reg)[1] + coefficients(reg)[2]*x , add=TRUE , col="red", lty=
 test_object("reg")
 test_error()
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:69929b8fc7
+## P-Wert
+Gegeben ist folgender Output:
+
+`Call:`
+`lm(formula = price ~ carat, data = diamonds_sub)`
+    
+    
+    Coefficients:
+                   Estimate    Std. Error t value  
+    (Intercept)    -1168       3607       -0.324    
+    carat           6921       3825       1.809   # 0.168
+
+*** =instructions
+- Berechnen Sie den fehlenden P-Wert im angegebenen Output.
+- AUFGABE NOCH NICHT FERTIG
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data(diamonds)
+library(tidyr)
+set.seed(1)
+diamonds_sub<- diamonds[ sample(1:nrow(diamonds),5,replace = F) ,]
+```
+
+*** =sample_code
+```{r}
+
+reg <- lm(price ~ carat, data = diamonds_sub) 
+summary(reg)
+
+    
+#Beides richtig: ? Ergibt aber unterschiedliche Ergebnisse...
+pnorm( - 1.809 ) *2
+pt( - 1.809, df = 4 ) *2
+```
+
+*** =solution
+```{r}
+reg <- lm(price ~ carat, data = diamonds_sub) 
+summary(reg)
+
+    
+#Beides richtig: ? Ergibt aber unterschiedliche Ergebnisse...
+pnorm( - 1.809 ) *2
+pt( - 1.809, df = 4 ) *2
+```
+
+*** =sct
+```{r}
+
+```
