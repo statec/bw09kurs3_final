@@ -204,7 +204,7 @@ Gegeben ist folgender Output:
 
 *** =instructions
 - Berechnen Sie den fehlenden P-Wert im angegebenen Output.
-- AUFGABE NOCH NICHT FERTIG
+- Der entsprechende Befehl ist bereits angegeben, genau wie die Freiheitsgrade.
 *** =hint
 
 *** =pre_exercise_code
@@ -222,10 +222,7 @@ diamonds_sub<- diamonds[ sample(1:nrow(diamonds),5,replace = F) ,]
 reg <- lm(price ~ carat, data = diamonds_sub) 
 summary(reg)
 
-    
-#Beides richtig: ? Ergibt aber unterschiedliche Ergebnisse...
-pnorm( - 1.809 ) *2
-pt( - 1.809, df = 4 ) *2
+pwert <- pt( ___ , df = 4 )___
 ```
 
 *** =solution
@@ -233,15 +230,13 @@ pt( - 1.809, df = 4 ) *2
 reg <- lm(price ~ carat, data = diamonds_sub) 
 summary(reg)
 
-    
-#Beides richtig: ? Ergibt aber unterschiedliche Ergebnisse...
-pnorm( - 1.809 ) *2
-pt( - 1.809, df = 4 ) *2
+pwert <- pt( - 1.809, df = 4 ) *2
 ```
 
 *** =sct
 ```{r}
-
+test_object("pwert")
+test_error()
 ```
 
 
